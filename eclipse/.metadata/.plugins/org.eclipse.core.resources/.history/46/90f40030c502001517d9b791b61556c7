@@ -1,0 +1,9 @@
+package de.tisan.mcoref.core;
+
+import de.tisan.mcoref.events.properties.BukkitListener;
+
+public class MCoreFEvents implements BukkitListener {
+	public MCoreFEvents(){
+		
+	}
+}

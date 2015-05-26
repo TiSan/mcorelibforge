@@ -1,0 +1,14 @@
+package de.tisan.mcoref.plugins;
+
+import de.tisan.mcoref.plugins.commands.BukkitCommand;
+
+public abstract class BukkitJavaPlugin {
+	boolean enabled = true;
+	BukkitCommand[] commands;
+	
+	public abstract void onEnable();
+
+	public abstract void onDisable();
+
+	public abstract void onLoad();
+}

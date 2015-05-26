@@ -1,0 +1,115 @@
+package de.tisan.mcoref.plugins;
+
+import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BukkitPluginManager {
+	private ArrayList<BukkitJavaPlugin> plugins;
+	
+	public BukkitPluginManager() {
+		loadPlugins();
+	}
+
+	public ArrayList<BukkitJavaPlugin> getPlugins() {
+		return plugins;
+	}
+
+	public void unloadPlugins() {
+		for (BukkitJavaPlugin p : plugins) {
+			//Logger.get().log("Disabling plugin '" + p.getName() + "', version " + p.getVersion());
+			p.onDisable();
+			p.enabled = false;
+			//Logger.get().log("Disabled plugin '" + p.getName() + "', version " + p.getVersion());
+		}
+		plugins.clear();
+	}
+	private ArrayList<BukkitJavaPlugin> loadPlugins(String pluginFolder) {
+		ArrayList<BukkitJavaPlugin> plugins = new ArrayList<BukkitJavaPlugin>();
+		File dir = new File(pluginFolder);
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+		for (File f : dir.listFiles()) {
+			if (f.getName().contains(".jar")) {
+				ClassLoader loader;
+				try {
+					loader = URLClassLoader.newInstance(new URL[] { f.toURI().toURL() }, getClass().getClassLoader());
+					ArrayList<String> properties = readStringsFromFile(f.getAbsolutePath());
+					if ((properties != null) && (properties.size() > 0)) {
+						String pluginName = getProperty(properties, "name");
+						String version = getProperty(properties, "version");
+						String mainClass = getProperty(properties, "main");
+						Command[] commands = getPropertyCommand(properties, "command");
+
+						if ((pluginName != null) && (version != null) && (mainClass != null) && (commands != null)) {
+							try {
+								Class<?> rawClass = Class.forName(mainClass, true, loader);
+								Class<? extends ServerControllerPlugin> runClass = rawClass.asSubclass(ServerControllerPlugin.class);
+								try {
+									Constructor<? extends ServerControllerPlugin> ctor = runClass.getConstructor();
+									try {
+										Logger.get().log("Enabling plugin '" + pluginName + "', version " + version);
+										ServerControllerPlugin doRun = ctor.newInstance();
+										doRun.commands = commands;
+										doRun.name = pluginName;
+										doRun.version = version;
+										doRun.enabled = true;
+										doRun.onEnable();
+										Logger.get().log("Enabled plugin '" + pluginName + "', version " + version);
+										plugins.add(doRun);
+									} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+										Logger.get().err("Die Main-Klasse '" + mainClass + "' konnte nicht erstellt werden. Sind die Versionen kompatibel?");
+									}
+
+								} catch (NoSuchMethodException | SecurityException e) {
+									Logger.get()
+											.err("Fehler in der Main-Klasse! Die ServerControllerPlugin hat ein unerwartetes Format. Sind die Versionen kompatibel?");
+								}
+
+							} catch (ClassNotFoundException e) {
+								Logger.get().err("Fehler in der plugin.ini! Main-Klasse konnte nicht gefunden werden: " + mainClass);
+							}
+
+						} else {
+							Logger.get().err("Fehler in der plugin.ini! Nicht alle nötigen Werte wurden angegeben! (name,version,main,commands)");
+						}
+
+					} else {
+						Logger.get().err("Plugin.ini wurde in '" + f.getAbsolutePath() + "' nicht gefunden!");
+					}
+				} catch (MalformedURLException e) {
+					Logger.get().err("Fehler beim Laden der JAR-Datei '" + f.getAbsolutePath() + "'.");
+				}
+
+			}
+
+		}
+		return plugins;
+	}
+	
+	private ArrayList<String> readStringsFromFile(String pathToJar) {
+		ArrayList<String> strings = new ArrayList<String>();
+		String path = pathToJar;
+		String inputFile = "jar:file:/" + path + "!/plugin.ini";
+		try {
+			URL inputURL = new URL(inputFile);
+			URLConnection uc = inputURL.openConnection();
+			uc.setUseCaches(false);
+			InputStream r = uc.getInputStream();
+			Scanner sc = new Scanner(r);
+			while (sc.hasNextLine()) {
+				strings.add(sc.nextLine());
+			}
+			sc.close();
+			r.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return strings;
+	}
+}

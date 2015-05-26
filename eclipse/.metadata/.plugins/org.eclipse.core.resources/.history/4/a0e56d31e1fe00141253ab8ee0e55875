@@ -1,0 +1,14 @@
+package de.tisan.forge.firstmod.commons;
+
+public enum FirstModProperty {
+	MODID("FirstMod"), VERSION("0.1"), NAME("The cruel mod."), CLIENTPROXY(
+			"de.tisan.forge.firstmod.proxies.FirstModClientProxy"), SERVERPROXY(
+			"de.tisan.forge.firstmod.proxies.FirstModServerProxy");
+
+	private String value;
+
+	private FirstModProperty(String value) {
+		this.value = value;
+	}
+
+}

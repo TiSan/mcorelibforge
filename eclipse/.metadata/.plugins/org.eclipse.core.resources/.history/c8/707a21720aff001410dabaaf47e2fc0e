@@ -1,0 +1,93 @@
+package de.tisan.forge.firstmod;
+
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.relauncher.Side;
+import de.tisan.forge.firstmod.blocks.FirstModBlocks;
+import de.tisan.forge.firstmod.commons.FirstModProperty;
+import de.tisan.forge.firstmod.crafting.CraftingManager;
+import de.tisan.forge.firstmod.items.FirstModItems;
+import de.tisan.forge.firstmod.proxies.FirstModProxy;
+import de.tisan.forge.helpers.CommunicationManager;
+
+@Mod(modid = FirstModProperty.MODID, version = FirstModProperty.VERSION, name = FirstModProperty.NAME, canBeDeactivated = false)
+public class FirstMod {
+	@Instance(value = FirstModProperty.MODID)
+	public static FirstMod instance;
+
+	@SidedProxy(clientSide = FirstModProperty.CLIENTPROXY, serverSide = FirstModProperty.SERVERPROXY)
+	public static FirstModProxy proxy;
+	private CreativeTabs blockTab = new CreativeTabs("CruelTab") {
+
+		@Override
+		public Item getTabIconItem() {
+
+			return Item.getItemFromBlock(FirstModBlocks.get().getBlockTiBlock());
+		}
+	};
+
+	/**
+	 * Erstellen von Blocks, Items und Tile Entities + Config.
+	 * 
+	 * @param event
+	 */
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
+		FirstMod.proxy.preInit();
+		FirstModBlocks.get().preInit();
+		FirstModItems.get().preInit();
+		
+	}
+
+	/**
+	 * Netzwerksachen und so.
+	 * 
+	 * @param event
+	 */
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		// some example code
+		System.out.println("DIRT BLOCK >> " + Blocks.dirt.getUnlocalizedName());
+		FirstMod.proxy.init();
+		CraftingManager.load();
+		comm = CommunicationManager.createCommunication(FirstModProperty.MODID);
+	}
+
+	/**
+	 * Renderers, Keybindings
+	 * 
+	 * @param event
+	 */
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		FirstMod.proxy.postInit();
+	}
+
+	/**
+	 * Commandregistrierung
+	 * 
+	 * @param event
+	 */
+	@EventHandler
+	public void serverLoad(FMLServerStartingEvent event) {
+
+	}
+
+	public CreativeTabs getBlockTab() {
+		return blockTab;
+	}
+
+	public boolean isServer() {
+		return FMLCommonHandler.instance().getEffectiveSide().equals(Side.SERVER);
+	}
+}

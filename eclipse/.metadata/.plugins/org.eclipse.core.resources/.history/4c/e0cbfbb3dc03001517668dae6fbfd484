@@ -1,0 +1,8 @@
+package de.tisan.mcoref.plugins;
+
+public abstract class BukkitJavaPlugin {
+	public abstract void onEnable();
+	public abstract void onDisable();
+	public abstract void onLoad();
+	
+}

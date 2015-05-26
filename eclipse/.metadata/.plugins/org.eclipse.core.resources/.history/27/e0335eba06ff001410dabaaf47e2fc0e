@@ -1,0 +1,17 @@
+package de.tisan.forge.helpers;
+
+import java.util.ArrayList;
+
+
+public class CommunicationManager {
+	private static ArrayList<Communication> communications = new ArrayList<Communication>();
+	
+	public static Communication createCommunication(){
+		Communication c = new Communication();
+		communications.add(c);
+		return ;
+	}
+	
+	
+	
+}

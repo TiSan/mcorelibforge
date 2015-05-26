@@ -1,0 +1,7 @@
+package de.tisan.forge.helpers;
+
+import akka.actor.InvalidMessageException;
+
+public class ClientToServerMessage implements IMessage{
+
+}

@@ -1,0 +1,28 @@
+package de.tisan.forge.firstmod.items;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
+public class FirstModItems {
+	private static FirstModItems instance;
+	private ItemHoden hoden;
+	private ItemEichel hoden;
+	
+	public static FirstModItems get() {
+		return (FirstModItems.instance == null ? (FirstModItems.instance = new FirstModItems()) : FirstModItems.instance);
+	}
+
+	private FirstModItems() {
+	}
+	
+	public void preInit() {
+		hoden = new ItemHoden();
+		GameRegistry.registerItem(hoden, hoden.getUnlocalizedName());
+
+	}
+
+	public ItemHoden getHoden() {
+		return hoden;
+	}
+	
+	
+}

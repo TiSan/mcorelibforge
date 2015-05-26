@@ -1,0 +1,26 @@
+package de.tisan.mcoref.plugins;
+
+import java.util.ArrayList;
+
+public class BukkitPluginManager {
+	private ArrayList<BukkitJavaPlugin> plugins;
+	
+	public BukkitPluginManager() {
+		loadPlugins();
+	}
+
+	public ArrayList<BukkitJavaPlugin> getPlugins() {
+		return plugins;
+	}
+
+	public void unloadPlugins() {
+		for (ServerControllerPlugin p : plugins) {
+			Logger.get().log("Disabling plugin '" + p.getName() + "', version " + p.getVersion());
+			p.onDisable();
+			p.enabled = false;
+			Logger.get().log("Disabled plugin '" + p.getName() + "', version " + p.getVersion());
+		}
+		plugins.clear();
+	}
+	
+}

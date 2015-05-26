@@ -1,0 +1,15 @@
+package de.tisan.forge.firstmod.proxies;
+
+public abstract class FirstModProxy {
+	public abstract void preInit();
+
+	public abstract void init();
+
+	public abstract void postInit();
+
+	public abstract EntityPlayer getClientPlayer();
+
+	public abstract void registerRenderers();
+
+	public abstract EntityPlayer getPacketPlayer(INetHandler iNetHandler);
+}

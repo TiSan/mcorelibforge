@@ -1,0 +1,5 @@
+package de.tisan.test;
+
+public class TestPlugin extends BukkitJavaPlugin{
+
+}

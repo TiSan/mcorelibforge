@@ -1,0 +1,7 @@
+package de.tisan.forge.firstmod.crafting;
+
+public class CraftingManager {
+	public static void load(){
+		
+	}
+}

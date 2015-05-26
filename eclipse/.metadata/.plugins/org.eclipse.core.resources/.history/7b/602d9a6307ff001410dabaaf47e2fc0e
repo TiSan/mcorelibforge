@@ -1,0 +1,7 @@
+package de.tisan.forge.helpers;
+
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+
+public class ClientToServerMessage implements IMessage{
+
+}

@@ -1,0 +1,70 @@
+package de.tisan.forge.firstmod;
+
+import net.minecraft.init.Blocks;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import de.tisan.forge.firstmod.commons.FirstModProperty;
+import de.tisan.forge.firstmod.proxies.FirstModProxy;
+
+@Mod(modid = FirstModProperty.MODID, version = FirstModProperty.VERSION, name = FirstModProperty.NAME, canBeDeactivated = false)
+public class FirstMod {
+	@Instance(value = FirstModProperty.MODID)
+	public static FirstMod instance;
+
+	@SidedProxy(clientSide = FirstModProperty.CLIENTPROXY, serverSide = FirstModProperty.SERVERPROXY)
+	public static FirstModProxy proxy;
+
+	public static FirstMod get() {
+		return FirstMod.instance;
+	}
+	
+	/**
+	 * Erstellen von Blocks, Items und Tile Entities + Config.
+	 * 
+	 * @param event
+	 */
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
+		FirstMod.proxy.preInit();
+
+	}
+
+	/**
+	 * Netzwerksachen und so.
+	 * 
+	 * @param event
+	 */
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		// some example code
+		System.out.println("DIRT BLOCK >> " + Blocks.dirt.getUnlocalizedName());
+		FirstMod.proxy.init();
+	}
+
+	/**
+	 * Renderers, Keybindings
+	 * 
+	 * @param event
+	 */
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		FirstMod.proxy.postInit();
+	}
+
+	/**
+	 * Commandregistrierung
+	 * 
+	 * @param event
+	 */
+	@EventHandler
+	public void serverLoad(FMLServerStartingEvent event) {
+
+	}
+
+}

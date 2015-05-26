@@ -1,0 +1,5 @@
+package de.tisan.mcoref.plugins;
+
+public class BukkitPluginManager {
+	
+}

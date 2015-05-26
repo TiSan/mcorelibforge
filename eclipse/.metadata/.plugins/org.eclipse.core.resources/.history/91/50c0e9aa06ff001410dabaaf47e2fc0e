@@ -1,0 +1,11 @@
+package de.tisan.forge.helpers;
+
+
+public class CommunicationManager {
+	private ArrayList<Communication> communications;
+	
+	public static Communication createCommunication(){
+		return new Communication();
+	}
+	
+}

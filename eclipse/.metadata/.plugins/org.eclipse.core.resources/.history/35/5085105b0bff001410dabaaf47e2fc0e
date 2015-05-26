@@ -1,0 +1,26 @@
+package de.tisan.forge.firstmod;
+
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+import net.minecraftforge.common.DimensionManager;
+import de.tisan.forge.helpers.CommunicationEvent;
+
+public class FirstModCommEvent implements CommunicationEvent{
+
+	@Override
+	public void onServerToClientMessageReceived(NBTTagCompound tag) {
+		
+	}
+
+	@Override
+	public void onClientToServerMessageReceived(NBTTagCompound tag) {
+		if(tag.hasKey("EXPLODE_ON_TIBLOCK")){
+			int x = tag.getInteger("x");
+			int y = tag.getInteger("y");
+			int z = tag.getInteger("z");
+			int worldId = tag.getInteger("worldId");
+			World w = DimensionManager.getWorld(worldId);
+		}
+	}
+
+}

@@ -1,0 +1,25 @@
+package de.tisan.test;
+
+import de.tisan.mcoref.plugins.BukkitJavaPlugin;
+
+public class TestPlugin extends BukkitJavaPlugin{
+
+	@Override
+	public void onEnable() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onDisable() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onLoad() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

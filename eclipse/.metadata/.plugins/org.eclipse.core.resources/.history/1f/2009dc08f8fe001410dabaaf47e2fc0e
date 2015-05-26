@@ -1,0 +1,10 @@
+package de.tisan.forge.firstmod.items;
+
+import de.tisan.forge.firstmod.blocks.FirstModBlocks;
+
+public class FirstModItems {
+	private static FirstModItems instance;
+	public static FirstModItems get() {
+		return (FirstModItems.instance == null ? (FirstModItems.instance = new FirstModItems()) : FirstModItems.instance);
+	}
+}

@@ -1,0 +1,9 @@
+package de.tisan.forge.helpers;
+
+import net.minecraft.nbt.NBTTagCompound;
+
+public interface CommunicationEvent {
+	public void onServerToClientMessageReceived(NBTTagCompound tag);
+	public void onClientToServerMessageReceived();
+	
+}

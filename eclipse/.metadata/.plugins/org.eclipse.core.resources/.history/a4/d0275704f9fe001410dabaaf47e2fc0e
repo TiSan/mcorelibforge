@@ -1,0 +1,21 @@
+package de.tisan.forge.firstmod.items;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+import de.tisan.forge.firstmod.blocks.BlockTiBlock;
+
+public class FirstModItems {
+	private static FirstModItems instance;
+	private ItemHoden hoden;
+	public static FirstModItems get() {
+		return (FirstModItems.instance == null ? (FirstModItems.instance = new FirstModItems()) : FirstModItems.instance);
+	}
+
+	private FirstModItems() {
+	}
+	
+	public void preInit() {
+		hoden = new ItemHoden();
+		GameRegistry.registerBlock(blockTiBlock, blockTiBlock.getUnlocalizedName());
+
+	}
+}

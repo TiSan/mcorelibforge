@@ -1,0 +1,18 @@
+package de.tisan.forge.firstmod;
+
+import net.minecraft.nbt.NBTTagCompound;
+import de.tisan.forge.helpers.CommunicationEvent;
+
+public class FirstModCommEvent implements CommunicationEvent{
+
+	@Override
+	public void onServerToClientMessageReceived(NBTTagCompound tag) {
+		
+	}
+
+	@Override
+	public void onClientToServerMessageReceived(NBTTagCompound tag) {
+		if(tag.hasKey(""))
+	}
+
+}

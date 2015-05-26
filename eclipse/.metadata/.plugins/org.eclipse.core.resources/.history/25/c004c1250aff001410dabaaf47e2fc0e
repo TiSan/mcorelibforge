@@ -1,0 +1,23 @@
+package de.tisan.forge.helpers;
+
+import java.util.ArrayList;
+
+public class CommunicationManager {
+	private static ArrayList<Communication> communications = new ArrayList<Communication>();
+
+	public static Communication createCommunication(String modId) {
+		
+		Communication c = new Communication(modId);
+		CommunicationManager.communications.add(c);
+		return c;
+	}
+	
+	public static Communication getCommunication(String modId){
+		for(Communication c : CommunicationManager.communications){
+			if(c.getName().split(":")[1].equalsIgnoreCase(modId)){
+				return c;
+			}
+		}
+	}
+
+}

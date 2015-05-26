@@ -1,0 +1,9 @@
+package de.tisan.forge.firstmod.blocks;
+
+public class FirstModBlocks {
+	private static FirstModBlocks instance;
+	
+	public static FirstModBlocks get(){
+		return (instance == null ? (instance = new FirstModBlocks()) : instance);
+	}
+}

@@ -1,0 +1,9 @@
+package de.tisan.mcoref.plugins;
+
+import java.util.ArrayList;
+
+public class BukkitPluginManager {
+	private ArrayList<BukkitJavaPlugin> plugins;
+	
+	
+}
