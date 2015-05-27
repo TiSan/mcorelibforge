@@ -6,16 +6,18 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import de.tisan.mcoref.plugins.BukkitJavaPlugin;
 
-public class MCCommand implements ICommand{
+public class MCCommand implements ICommand {
 	private String name;
 	private String description;
 	private String commandUsage;
 	private BukkitJavaPlugin plugin;
-	public MCCommand(BukkitJavaPlugin plugin, String name, String description){
+
+	public MCCommand(BukkitJavaPlugin plugin, String name, String description) {
 		this.plugin = plugin;
 		this.name = name;
 		this.description = description;
 	}
+
 	@Override
 	public int compareTo(Object arg0) {
 		// TODO Auto-generated method stub
@@ -24,14 +26,12 @@ public class MCCommand implements ICommand{
 
 	@Override
 	public String getCommandName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender p_71518_1_) {
-		// TODO Auto-generated method stub
-		return null;
+		return commandUsage;
 	}
 
 	@Override
@@ -42,25 +42,38 @@ public class MCCommand implements ICommand{
 
 	@Override
 	public void processCommand(ICommandSender sender, String[] args) {
-		plugin.onComma
+		plugin.onCommand(BukkitCommandSender.convert(sender), (BukkitCommand) this, args);
 	}
 
 	@Override
 	public boolean canCommandSenderUseCommand(ICommandSender p_71519_1_) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public List addTabCompletionOptions(ICommandSender p_71516_1_, String[] p_71516_2_) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isUsernameIndex(String[] p_82358_1_, int p_82358_2_) {
-		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public String getCommandUsage() {
+		return commandUsage;
+	}
+
+	public BukkitJavaPlugin getPlugin() {
+		return plugin;
+	}
+
 }

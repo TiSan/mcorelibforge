@@ -1,29 +1,16 @@
-[11:31:45] [main/INFO]: Logging in with username & password
-[11:31:54] [main/INFO]: Setting user: TiSanNET
-[11:31:58] [Client thread/INFO]: LWJGL Version: 2.9.1
-[11:32:01] [Twitch authenticator/ERROR]: Given twitch access token is invalid
-[11:32:11] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Basic easy to use API like bukkit.
-[11:32:13] [Sound Library Loader/INFO]: Sound engine started
-[11:32:28] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[11:32:28] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[11:32:28] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Basic easy to use API like bukkit.
-[11:32:29] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[11:32:29] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[11:32:30] [Sound Library Loader/INFO]: Sound engine started
-[11:32:56] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
-[11:32:56] [Server thread/INFO]: Generating keypair
-[11:33:06] [Server thread/INFO]: Preparing start region for level 0
-[11:33:07] [Server thread/INFO]: Preparing spawn area: 0%
-[11:33:08] [Server thread/INFO]: Preparing spawn area: 71%
-[11:33:09] [Server thread/INFO]: Changing view distance to 12, from 10
-[11:33:10] [Server thread/INFO]: TiSanNET[local:E:205129e7] logged in with entity id 344 at (-14.91158300181246, 72.1707870772188, 251.4287519540135)
-[11:33:10] [Server thread/INFO]: TiSanNET joined the game
-[11:33:21] [Client thread/INFO]: [CHAT] Unknown command. Try /help for a list of commands
-[11:33:24] [Client thread/INFO]: [CHAT] Unknown command. Try /help for a list of commands
-[11:33:32] [Client thread/INFO]: Stopping!
-[11:33:32] [Server thread/INFO]: Stopping server
-[11:33:32] [Server thread/INFO]: Saving players
-[11:33:32] [Server thread/INFO]: Saving worlds
-[11:33:32] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[11:33:32] [Client Shutdown Thread/INFO]: Stopping server
-[11:33:32] [Client Shutdown Thread/INFO]: Saving players
+[12:11:29] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[12:11:38] [Server thread/INFO]: Loading properties
+[12:11:39] [Server thread/INFO]: Default game type: SURVIVAL
+[12:11:39] [Server thread/INFO]: Generating keypair
+[12:11:39] [Server thread/INFO]: Starting Minecraft server on *:25565
+[12:11:40] [Server thread/INFO]: Preparing level "world"
+[12:11:41] [Server thread/INFO]: Preparing start region for level 0
+[12:11:42] [Server thread/INFO]: Preparing spawn area: 2%
+[12:11:43] [Server thread/INFO]: Preparing spawn area: 87%
+[12:11:43] [Server thread/INFO]: Done (3,759s)! For help, type "help" or "?"
+[12:13:43] [Server thread/INFO]: Stopping server
+[12:13:43] [Server thread/INFO]: Saving players
+[12:13:43] [Server thread/INFO]: Saving worlds
+[12:13:43] [Server thread/INFO]: Saving chunks for level 'world'/Overworld
+[12:13:44] [Server thread/INFO]: Saving chunks for level 'world'/Nether
+[12:13:44] [Server thread/INFO]: Saving chunks for level 'world'/The End

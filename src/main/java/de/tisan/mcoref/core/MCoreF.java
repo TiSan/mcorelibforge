@@ -18,6 +18,8 @@ import de.tisan.mcoref.examples.crafting.CraftingManager;
 import de.tisan.mcoref.examples.items.FirstModItems;
 import de.tisan.mcoref.examples.proxies.MCoreFProxy;
 import de.tisan.mcoref.helpers.Bukkit;
+import de.tisan.mcoref.helpers.Logger;
+import de.tisan.mcoref.plugins.commands.BukkitCommand;
 
 @Mod(modid = MCoreFProperty.MODID, version = MCoreFProperty.VERSION, name = MCoreFProperty.NAME, canBeDeactivated = false)
 public class MCoreF {
@@ -87,7 +89,10 @@ public class MCoreF {
 	 */
 	@EventHandler
 	public void serverLoad(FMLServerStartingEvent event) {
-
+		for(BukkitCommand c : Bukkit.getCommandManager().getCommands()){
+			Logger.info("Registering server command '" + c.getCommandName() + "' for plugin '" + c.getPlugin().getName() + "'");
+			event.registerServerCommand(c);
+		}
 	}
 
 	public CreativeTabs getBlockTab() {

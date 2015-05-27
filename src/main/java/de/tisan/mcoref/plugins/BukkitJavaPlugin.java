@@ -1,6 +1,7 @@
 package de.tisan.mcoref.plugins;
 
 import de.tisan.mcoref.plugins.commands.BukkitCommand;
+import de.tisan.mcoref.plugins.commands.BukkitCommandSender;
 
 public abstract class BukkitJavaPlugin {
 	boolean enabled = true;
@@ -11,7 +12,7 @@ public abstract class BukkitJavaPlugin {
 	public abstract void onEnable();
 
 	public abstract void onDisable();
-
+	public abstract void onCommand(BukkitCommandSender sender, BukkitCommand command, String[] args);
 	public boolean isEnabled() {
 		return enabled;
 	}
