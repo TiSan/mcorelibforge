@@ -36,7 +36,6 @@ public class MCCommand implements ICommand {
 
 	@Override
 	public List getCommandAliases() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
