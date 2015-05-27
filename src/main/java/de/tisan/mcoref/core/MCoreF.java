@@ -48,7 +48,8 @@ public class MCoreF {
 		FirstModBlocks.get().preInit();
 		FirstModItems.get().preInit();
 		events = new MCoreFEvents();
-		
+
+		Bukkit.initCommandManager();
 		Bukkit.initPluginManager();
 	}
 

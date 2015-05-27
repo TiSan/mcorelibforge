@@ -1,0 +1,13 @@
+package de.tisan.mcoref.plugins.commands;
+
+import java.util.ArrayList;
+
+public class BukkitCommandManager {
+	private ArrayList<BukkitCommand> commands;
+	
+	public void registerCommand(BukkitaJavaPlugin plugin, String command, String description){
+		commands.add(new BukkitCommand(plugin, command, description));
+	}
+	
+	
+}

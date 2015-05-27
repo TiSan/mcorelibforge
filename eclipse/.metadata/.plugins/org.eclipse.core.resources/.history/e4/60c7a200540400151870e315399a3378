@@ -1,0 +1,7 @@
+package de.tisan.mcoref.plugins.commands;
+
+import net.minecraft.command.ICommand;
+
+public class MCCommand implements ICommand{
+
+}

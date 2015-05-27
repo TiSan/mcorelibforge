@@ -1,0 +1,8 @@
+package de.tisan.mcoref.plugins.commands;
+
+public class BukkitCommandManager {
+	private ArrayList<MCCommand> commands;
+	public void registerCommand(String command, String description){
+		
+	}
+}

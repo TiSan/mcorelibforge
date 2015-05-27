@@ -51,9 +51,8 @@ public class BukkitPluginManager {
 						String pluginName = getProperty(properties, "name");
 						String version = getProperty(properties, "version");
 						String mainClass = getProperty(properties, "main");
-						BukkitCommand[] commands = getPropertyCommand(properties, "command");
-
-						if ((pluginName != null) && (version != null) && (mainClass != null) && (commands != null)) {
+						
+						if ((pluginName != null) && (version != null) && (mainClass != null)) {
 							try {
 								Class<?> rawClass = Class.forName(mainClass, true, loader);
 								Class<? extends BukkitJavaPlugin> runClass = rawClass.asSubclass(BukkitJavaPlugin.class);
@@ -62,7 +61,7 @@ public class BukkitPluginManager {
 									try {
 										Logger.info("Enabling plugin '" + pluginName + "', version " + version);
 										BukkitJavaPlugin doRun = ctor.newInstance();
-										doRun.commands = commands;
+										doRun.commands = getPropertyCommand(doRun, properties, "command");
 										doRun.name = pluginName;
 										doRun.version = version; 
 										doRun.enabled = true;
@@ -110,7 +109,7 @@ public class BukkitPluginManager {
 		return null;
 	}
 
-	private BukkitCommand[] getPropertyCommand(ArrayList<String> strings, String key) {
+	private BukkitCommand[] getPropertyCommand(BukkitJavaPlugin plugin, ArrayList<String> strings, String key) {
 		ArrayList<BukkitCommand> tmp = new ArrayList<BukkitCommand>();
 		for (String s : strings) {
 			if (s.contains("=")) {
@@ -118,7 +117,7 @@ public class BukkitPluginManager {
 				if (spl[0].equalsIgnoreCase(key)) {
 
 					String[] spl2 = spl[1].split(",", 2);
-					tmp.add(new BukkitCommand(spl2[0], spl2[1]));
+					tmp.add(new BukkitCommand(plugin, spl2[0], spl2[1]));
 				}
 			}
 		}

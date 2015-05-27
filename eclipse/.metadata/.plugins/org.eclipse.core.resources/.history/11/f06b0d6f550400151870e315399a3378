@@ -1,0 +1,12 @@
+package de.tisan.mcoref.plugins.commands;
+
+import net.minecraft.command.ICommandSender;
+
+public interface BukkitCommandSender implements ICommandSender{
+	public static BukkitCommandSender convert(ICommandSender sender){
+		BukkitCommandSender newSender = new BukkitCommandSender();
+	
+		return newSender;
+	}
+
+}

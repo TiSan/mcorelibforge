@@ -12,9 +12,12 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import de.tisan.mcoref.events.core.BukkitEventManager;
 import de.tisan.mcoref.plugins.BukkitPluginManager;
+import de.tisan.mcoref.plugins.commands.BukkitCommandManager;
 
 public class Bukkit {
 	private static BukkitPluginManager pluginManager;
+	private static BukkitCommandManager commandManager;
+	
 	public static void sendMessage(EntityPlayer player, String message) {
 		player.addChatComponentMessage(new ChatComponentText(message));
 	}
@@ -88,4 +91,19 @@ public class Bukkit {
 			Bukkit.pluginManager = new BukkitPluginManager();
 		}
 	}
+
+	public static void initCommandManager() {
+		if(Bukkit.commandManager == null){
+			Bukkit.commandManager = new BukkitCommandManager();
+		}
+	}
+
+	public static BukkitPluginManager getPluginManager() {
+		return Bukkit.pluginManager;
+	}
+
+	public static BukkitCommandManager getCommandManager() {
+		return Bukkit.commandManager;
+	}
+	
 }
