@@ -1,7 +1,1 @@
-/libs
-/.settings
-/gradle
-/build
-/src_old
-.gradle
-*.class
+/bin/

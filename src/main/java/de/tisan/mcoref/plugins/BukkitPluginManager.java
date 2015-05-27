@@ -64,7 +64,7 @@ public class BukkitPluginManager {
 										BukkitJavaPlugin doRun = ctor.newInstance();
 										doRun.commands = commands;
 										doRun.name = pluginName;
-										doRun.version = version;
+										doRun.version = version; 
 										doRun.enabled = true;
 										doRun.onEnable();
 										Logger.info("Enabled plugin '" + pluginName + "', version " + version);
