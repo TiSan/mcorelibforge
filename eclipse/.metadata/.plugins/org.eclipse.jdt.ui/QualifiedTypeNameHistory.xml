@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="tv.twitch.chat.ChatChannelInfo"/>
-<fullyQualifiedTypeName name="net.minecraft.util.EnumChatFormatting"/>
-<fullyQualifiedTypeName name="de.tisan.forge.firstmod.proxies.FirstModClientProxy"/>
-<fullyQualifiedTypeName name="cpw.mods.fml.common.FMLCommonHandler"/>
-<fullyQualifiedTypeName name="net.minecraft.server.MinecraftServer"/>
-<fullyQualifiedTypeName name="net.minecraft.client.Minecraft"/>
 <fullyQualifiedTypeName name="net.minecraft.entity.player.EntityPlayer"/>
 <fullyQualifiedTypeName name="de.tisan.forge.firstmod.items.ItemHoden"/>
-<fullyQualifiedTypeName name="net.minecraft.item.Item"/>
 <fullyQualifiedTypeName name="cpw.mods.fml.common.registry.GameRegistry"/>
 <fullyQualifiedTypeName name="net.minecraft.item.ItemStack"/>
 <fullyQualifiedTypeName name="java.lang.Character"/>
@@ -43,21 +36,28 @@
 <fullyQualifiedTypeName name="java.net.URL"/>
 <fullyQualifiedTypeName name="java.net.URLConnection"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
 <fullyQualifiedTypeName name="org.apache.commons.logging.Log"/>
-<fullyQualifiedTypeName name="de.tisan.mcoref.helpers.Logger"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="de.tisan.mcoref.plugins.BukkitPluginManager"/>
 <fullyQualifiedTypeName name="de.tisan.mcoref.events.properties.BukkitListener"/>
 <fullyQualifiedTypeName name="de.tisan.mcoref.events.properties.BukkitBlockInteractByPlayerEvent"/>
 <fullyQualifiedTypeName name="de.tisan.mcoref.events.core.BukkitEventHandler"/>
-<fullyQualifiedTypeName name="de.tisan.mcoref.helpers.Bukkit"/>
 <fullyQualifiedTypeName name="de.tisan.test.TestPluginListener"/>
 <fullyQualifiedTypeName name="de.tisan.mcoref.plugins.commands.MCCommand"/>
-<fullyQualifiedTypeName name="de.tisan.mcoref.plugins.commands.BukkitCommand"/>
-<fullyQualifiedTypeName name="de.tisan.mcoref.plugins.commands.BukkitCommandManager"/>
 <fullyQualifiedTypeName name="de.tisan.mcoref.plugins.BukkitJavaPlugin"/>
 <fullyQualifiedTypeName name="net.minecraft.command.ICommandSender"/>
 <fullyQualifiedTypeName name="de.tisan.mcoref.plugins.commands.BukkitCommandSender"/>
+<fullyQualifiedTypeName name="de.tisan.mcoref.plugins.commands.BukkitCommand"/>
+<fullyQualifiedTypeName name="de.tisan.mcoref.helpers.Logger"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="de.tisan.mcoref.plugins.commands.BukkitCommandManager"/>
+<fullyQualifiedTypeName name="de.tisan.mcoref.helpers.Bukkit"/>
+<fullyQualifiedTypeName name="net.minecraft.block.Block"/>
+<fullyQualifiedTypeName name="net.minecraft.item.Item"/>
+<fullyQualifiedTypeName name="net.minecraft.init.Blocks"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="de.tisan.mcoref.plugins.blocks.BukkitMaterialType"/>
+<fullyQualifiedTypeName name="de.tisan.mcoref.plugins.blocks.BukkitMaterial"/>
+<fullyQualifiedTypeName name="net.minecraft.block.material.Material"/>
 </qualifiedTypeNameHistroy>

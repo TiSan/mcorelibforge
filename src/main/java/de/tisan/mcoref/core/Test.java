@@ -1,35 +1,25 @@
 package de.tisan.mcoref.core;
 
-import de.tisan.mcoref.events.core.BukkitEventHandler;
-import de.tisan.mcoref.events.properties.BukkitBlockInteractByPlayerEvent;
-import de.tisan.mcoref.events.properties.BukkitBlockInteractEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 import de.tisan.mcoref.events.properties.BukkitListener;
-import de.tisan.mcoref.helpers.Bukkit;
 
 public class Test implements BukkitListener{
 
-	public static void main(String[] args) throws InterruptedException {
-		Test t = new Test();
-		Bukkit.getEventManager().registerEvents(t);
-		Thread.sleep(20);
-		Bukkit.getEventManager().callEvent(BukkitBlockInteractEvent.class);
-		
-		
+	public static void main(String[] args) throws InterruptedException, FileNotFoundException {
+		Scanner sc = new Scanner(new File("D:\\blocks.txt"));
+		String line = null;
+		while(sc.hasNextLine()){
+			line = sc.nextLine();
+			String tmp = line.substring(line.indexOf("Item"));
+			String[] tmp2 = tmp.split(" ");
+			String name = tmp2[1];
+			
+			System.out.println(name.toUpperCase() + "(Items." + name + ")," );
+		}
 	
 	}
 	
-	@BukkitEventHandler
-	public void onInteract(BukkitBlockInteractEvent event){
-		System.out.println("Pling1 " + event.isCancelled());
-		event.setCancelled(false);
-	}
-	
-	@BukkitEventHandler
-	public void onInteract2(BukkitBlockInteractEvent event){
-		System.out.println("Pling2 " + event.isCancelled());
-	}
-	@BukkitEventHandler
-	public void onInteract(BukkitBlockInteractByPlayerEvent event){
-		System.out.println("Pling3 " + event.isCancelled());
-	}
 }
