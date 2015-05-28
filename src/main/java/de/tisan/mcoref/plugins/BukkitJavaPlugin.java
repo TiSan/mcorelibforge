@@ -10,8 +10,11 @@ public abstract class BukkitJavaPlugin {
 	String version;
 
 	public abstract void onEnable();
+	public abstract void onPreEnable();
+	public abstract void onPostEnable();
 
 	public abstract void onDisable();
+	
 	public abstract void onCommand(BukkitCommandSender sender, BukkitCommand command, String[] args);
 	public boolean isEnabled() {
 		return enabled;

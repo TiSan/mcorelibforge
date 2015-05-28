@@ -66,7 +66,7 @@ public class BukkitPluginManager {
 										doRun.name = pluginName;
 										doRun.version = version; 
 										doRun.enabled = true;
-										doRun.onEnable();
+										doRun.onPreEnable();
 										Logger.info("Enabled plugin '" + pluginName + "', version " + version);
 										plugins.add(doRun);
 									} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
@@ -97,7 +97,24 @@ public class BukkitPluginManager {
 		}
 		return plugins;
 	}
-
+	
+	public void disablePlugins(){
+		for(BukkitJavaPlugin plugin : plugins){
+			plugin.onDisable();
+		}
+		plugins.clear();
+	}
+	public void initEnable(){
+		for(BukkitJavaPlugin plugin : plugins){
+			plugin.onEnable();
+		}
+	}
+	public void initPostEnable(){
+		for(BukkitJavaPlugin plugin : plugins){
+			plugin.onPostEnable();
+		}
+	}
+	
 	private String getProperty(ArrayList<String> strings, String key) {
 		for (String s : strings) {
 			if (s.contains("=")) {

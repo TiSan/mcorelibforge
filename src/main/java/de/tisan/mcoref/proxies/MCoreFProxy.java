@@ -1,4 +1,4 @@
-package de.tisan.mcoref.examples.proxies;
+package de.tisan.mcoref.proxies;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetHandler;

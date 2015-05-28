@@ -1,7 +1,5 @@
 package de.tisan.mcoref.core;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -14,29 +12,19 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import de.tisan.mcoref.commons.MCoreFProperty;
 import de.tisan.mcoref.communication.Communication;
 import de.tisan.mcoref.communication.CommunicationManager;
-import de.tisan.mcoref.examples.blocks.FirstModBlocks;
-import de.tisan.mcoref.examples.crafting.CraftingManager;
-import de.tisan.mcoref.examples.items.FirstModItems;
-import de.tisan.mcoref.examples.proxies.MCoreFProxy;
 import de.tisan.mcoref.helpers.Bukkit;
 import de.tisan.mcoref.helpers.Logger;
 import de.tisan.mcoref.plugins.BukkitJavaPluginLoader;
 import de.tisan.mcoref.plugins.commands.BukkitCommand;
+import de.tisan.mcoref.proxies.MCoreFProxy;
 
 @Mod(modid = MCoreFProperty.MODID, version = MCoreFProperty.VERSION, name = MCoreFProperty.NAME, canBeDeactivated = false)
 public class MCoreF {
 	@Instance(value = MCoreFProperty.MODID)
 	public static MCoreF instance;
-
+	public static boolean DEBUG_MODE = true;
 	@SidedProxy(clientSide = MCoreFProperty.CLIENTPROXY, serverSide = MCoreFProperty.SERVERPROXY)
 	public static MCoreFProxy proxy;
-	private CreativeTabs blockTab = new CreativeTabs("CruelTab") {
-
-		@Override
-		public Item getTabIconItem() {
-			return Item.getItemFromBlock(FirstModBlocks.get().getBlockTiBlock());
-		}
-	};
 
 	private Communication comm;
 	private MCoreFEvents events;
@@ -49,12 +37,10 @@ public class MCoreF {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		MCoreF.proxy.preInit();
-		FirstModBlocks.get().preInit();
-		FirstModItems.get().preInit();
 		events = new MCoreFEvents();
 		MinecraftForge.EVENT_BUS.register(events);
 		Bukkit.initCommandManager();
-		if(Bukkit.isClient()){
+		if(Bukkit.isClient() && !MCoreF.DEBUG_MODE){
 			BukkitJavaPluginLoader.downloadPlugins(Bukkit.getMinecraftMultiplayerServerListEntries());
 		}
 		
@@ -70,12 +56,11 @@ public class MCoreF {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		MCoreF.proxy.init();
-		CraftingManager.load();
 		comm = CommunicationManager.createCommunication(MCoreFProperty.MODID);
 		comm.addEvent(new MCoreFCommEvent());
 		comm = CommunicationManager.createCommunication(MCoreFProperty.MODID + "1");
 		comm.addEvent(new MCoreFCommEvent());
-		
+		Bukkit.getPluginManager().initEnable();
 	}
 
 	/**
@@ -86,7 +71,7 @@ public class MCoreF {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		MCoreF.proxy.postInit();
-		
+		Bukkit.getPluginManager().initPostEnable();
 	}
 
 	/**
@@ -100,10 +85,6 @@ public class MCoreF {
 			Logger.info("Registering server command '" + c.getCommandName() + "' for plugin '" + c.getPlugin().getName() + "'");
 			event.registerServerCommand(c);
 		}
-	}
-
-	public CreativeTabs getBlockTab() {
-		return blockTab;
 	}
 
 	public Communication getComm() {
