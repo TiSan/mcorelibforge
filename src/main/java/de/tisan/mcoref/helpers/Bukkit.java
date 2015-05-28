@@ -1,6 +1,9 @@
 package de.tisan.mcoref.helpers;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Map;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -105,5 +108,36 @@ public class Bukkit {
 	public static BukkitCommandManager getCommandManager() {
 		return Bukkit.commandManager;
 	}
-	
+	@SideOnly(Side.CLIENT)
+	public static ArrayList<ServerListEntry> getMinecraftMultiplayerServerListEntries(){
+		ArrayList<ServerListEntry> groups = new ArrayList<ServerListEntry>();
+		try{
+			Map<String, Object> obj = NBTStreamReader.read(new FileInputStream(new File(Minecraft.getMinecraft().mcDataDir.getAbsolutePath() + "\\servers.dat")), false);
+			String ll = "";
+			for(Object o: obj.values()){
+				ll += o.toString().replace("\r\n", "").replace("\n", "");
+			}
+			int i = 0;
+			int length = 0;
+			int begin = 0;
+			System.out.println(ll);
+			while(true){
+				char current = ll.charAt(i);
+				if(current == '{') {
+					begin = i;
+					
+				} else if(current == '}') {
+					groups.add(new ServerListEntry(ll.substring(begin + 1, i).split(", ")));
+				}
+				i++;
+				if(i == ll.length()){
+					break;
+				}
+			}
+		} catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
+		return groups;
+	}
 }

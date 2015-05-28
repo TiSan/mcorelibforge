@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import de.tisan.mcoref.blocks.BukkitBlock;
 import de.tisan.mcoref.events.properties.BukkitBlockInteractByPlayerEvent;
 import de.tisan.mcoref.events.properties.BukkitBlockInteractEvent;
 import de.tisan.mcoref.events.properties.BukkitEvent;
 import de.tisan.mcoref.events.properties.BukkitListener;
+import de.tisan.mcoref.plugins.blocks.BukkitBlock;
 
 public class BukkitEventManager {
 	private ArrayList<LiWiMeCom> methods;

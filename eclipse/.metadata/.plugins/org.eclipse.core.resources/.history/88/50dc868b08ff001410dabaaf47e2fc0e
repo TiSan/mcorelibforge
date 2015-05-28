@@ -1,7 +1,0 @@
-package de.tisan.forge.helpers;
-
-public interface CommunicationEvent {
-	public void onServerToClientMessageReceived();
-	public void onClientToServerMessageReceived();
-	
-}

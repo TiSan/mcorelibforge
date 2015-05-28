@@ -80,28 +80,6 @@ public enum BukkitMaterial {
 	}
 
 	public Material getMinecraftMaterial() {
-		switch (this) {
-		case REDSTONE_LAMP:
-		case REDSTONE_TORCH:
-		case LIT_REDSTONE_LAMP:
-		case UNLIT_REDSTONE_TORCH:
-			return Material.redstoneLight;
-		case ANVIL:
-			return Material.anvil;
-		case CACTUS:
-			return Material.cactus;
-		case CAKE_BLOCK:
-			return Material.cake;
-		case CARPET:
-			return Material.carpet;
-		case REDSTONE_WIRE:
-			return Material.circuits;
-		case CLAY:
-		case HARDENED_CLAY:
-		case STAINED_HARDENED_CLAY:
-			return Material.clay;
-		default:
-			return Material.rock;
-		}
+		return (block != null ? block.getMaterial() : null);
 	}
 }

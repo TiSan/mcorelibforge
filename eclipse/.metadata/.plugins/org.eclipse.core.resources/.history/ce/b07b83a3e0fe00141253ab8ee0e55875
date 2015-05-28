@@ -1,5 +1,0 @@
-package de.tisan.forge.firstmod.proxies;
-
-public class FirstModServerProxy extends FirstModProxy {
-
-}

@@ -1,6 +1,6 @@
 package de.tisan.mcoref.events.properties;
 
-import de.tisan.mcoref.blocks.BukkitBlock;
+import de.tisan.mcoref.plugins.blocks.BukkitBlock;
 
 public class BukkitBlockInteractEvent extends BukkitEvent{
 	private BukkitBlock block;

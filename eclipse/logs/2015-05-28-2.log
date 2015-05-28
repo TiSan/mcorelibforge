@@ -1,0 +1,12 @@
+[16:15:47] [main/INFO]: Logging in with username & password
+[16:15:56] [main/INFO]: Setting user: TiSanNET
+[16:16:00] [Client thread/INFO]: LWJGL Version: 2.9.1
+[16:16:02] [Twitch authenticator/ERROR]: Given twitch access token is invalid
+[16:16:11] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Basic easy to use API like bukkit.
+[16:16:13] [Sound Library Loader/INFO]: Sound engine started
+[16:16:18] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[16:16:18] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[16:16:18] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Basic easy to use API like bukkit.
+[16:16:19] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[16:16:19] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[16:16:20] [Sound Library Loader/INFO]: Sound engine started

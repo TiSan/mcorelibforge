@@ -2,7 +2,7 @@ package de.tisan.mcoref.events.properties;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import de.tisan.mcoref.blocks.BukkitBlock;
+import de.tisan.mcoref.plugins.blocks.BukkitBlock;
 
 public class BukkitBlockInteractByPlayerEvent extends BukkitBlockInteractEvent {
 	private EntityPlayer player;

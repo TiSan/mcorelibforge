@@ -2,6 +2,7 @@ package de.tisan.mcoref.core;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -19,6 +20,7 @@ import de.tisan.mcoref.examples.items.FirstModItems;
 import de.tisan.mcoref.examples.proxies.MCoreFProxy;
 import de.tisan.mcoref.helpers.Bukkit;
 import de.tisan.mcoref.helpers.Logger;
+import de.tisan.mcoref.plugins.BukkitJavaPluginLoader;
 import de.tisan.mcoref.plugins.commands.BukkitCommand;
 
 @Mod(modid = MCoreFProperty.MODID, version = MCoreFProperty.VERSION, name = MCoreFProperty.NAME, canBeDeactivated = false)
@@ -50,9 +52,14 @@ public class MCoreF {
 		FirstModBlocks.get().preInit();
 		FirstModItems.get().preInit();
 		events = new MCoreFEvents();
-
+		MinecraftForge.EVENT_BUS.register(events);
 		Bukkit.initCommandManager();
+		if(Bukkit.isClient()){
+			BukkitJavaPluginLoader.downloadPlugins(Bukkit.getMinecraftMultiplayerServerListEntries());
+		}
+		
 		Bukkit.initPluginManager();
+		
 	}
 
 	/**

@@ -1,16 +1,12 @@
-[12:11:29] [Server thread/INFO]: Starting minecraft server version 1.7.10
-[12:11:38] [Server thread/INFO]: Loading properties
-[12:11:39] [Server thread/INFO]: Default game type: SURVIVAL
-[12:11:39] [Server thread/INFO]: Generating keypair
-[12:11:39] [Server thread/INFO]: Starting Minecraft server on *:25565
-[12:11:40] [Server thread/INFO]: Preparing level "world"
-[12:11:41] [Server thread/INFO]: Preparing start region for level 0
-[12:11:42] [Server thread/INFO]: Preparing spawn area: 2%
-[12:11:43] [Server thread/INFO]: Preparing spawn area: 87%
-[12:11:43] [Server thread/INFO]: Done (3,759s)! For help, type "help" or "?"
-[12:13:43] [Server thread/INFO]: Stopping server
-[12:13:43] [Server thread/INFO]: Saving players
-[12:13:43] [Server thread/INFO]: Saving worlds
-[12:13:43] [Server thread/INFO]: Saving chunks for level 'world'/Overworld
-[12:13:44] [Server thread/INFO]: Saving chunks for level 'world'/Nether
-[12:13:44] [Server thread/INFO]: Saving chunks for level 'world'/The End
+[16:25:22] [main/INFO]: Logging in with username & password
+[16:25:32] [main/INFO]: Setting user: TiSanNET
+[16:25:35] [Client thread/INFO]: LWJGL Version: 2.9.1
+[16:25:37] [Twitch authenticator/ERROR]: Given twitch access token is invalid
+[16:25:45] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Basic easy to use API like bukkit.
+[16:25:47] [Sound Library Loader/INFO]: Sound engine started
+[16:25:52] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[16:25:52] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[16:25:53] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Basic easy to use API like bukkit.
+[16:25:53] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[16:25:54] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[16:25:54] [Sound Library Loader/INFO]: Sound engine started
