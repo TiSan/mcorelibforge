@@ -31,5 +31,17 @@ public class TestPlugin extends BukkitJavaPlugin{
 		
 	}
 
+	@Override
+	public void onPreEnable() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onPostEnable() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }

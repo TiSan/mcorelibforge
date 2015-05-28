@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-;
+
 import net.minecraft.client.Minecraft;
 import de.tisan.mcoref.helpers.ServerListEntry;
 

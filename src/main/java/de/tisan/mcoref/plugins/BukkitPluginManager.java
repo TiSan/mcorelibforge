@@ -19,6 +19,7 @@ public class BukkitPluginManager {
 	private ArrayList<BukkitJavaPlugin> plugins;
 
 	public BukkitPluginManager() {
+		plugins = new ArrayList<BukkitJavaPlugin>();
 		loadPlugins("plugins/");
 	}
 
