@@ -22,7 +22,7 @@ import de.tisan.mcoref.proxies.MCoreFProxy;
 public class MCoreF {
 	@Instance(value = MCoreFProperty.MODID)
 	public static MCoreF instance;
-	public static boolean DEBUG_MODE = true;
+	public static boolean DEBUG_MODE = false;
 	@SidedProxy(clientSide = MCoreFProperty.CLIENTPROXY, serverSide = MCoreFProperty.SERVERPROXY)
 	public static MCoreFProxy proxy;
 
