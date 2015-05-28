@@ -18,7 +18,7 @@ public class TestPlugin extends BukkitJavaPlugin{
 	public void onEnable() {
 		System.out.println("Plugin enabled!");
 		Bukkit.getEventManager().registerEvents(new TestPluginListener());
-
+	
 	}
 
 	@Override
