@@ -2,6 +2,9 @@ package de.tisan.test;
 
 import java.util.Arrays;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.player.EntityPlayer;
 import de.tisan.mcoref.helpers.Bukkit;
 import de.tisan.mcoref.helpers.ServerListEntry;
 import de.tisan.mcoref.plugins.BukkitJavaPlugin;
@@ -11,9 +14,11 @@ import de.tisan.mcoref.plugins.commands.BukkitCommandSender;
 public class TestPlugin extends BukkitJavaPlugin{
 
 	@Override
+	@SideOnly(value = Side.CLIENT)
 	public void onEnable() {
 		System.out.println("Plugin enabled!");
 		Bukkit.getEventManager().registerEvents(new TestPluginListener());
+
 	}
 
 	@Override
