@@ -1,5 +1,0 @@
-package de.tisan.mcoref.plugins;
-
-public abstract class BukkitJavaPlugin {
-	
-}

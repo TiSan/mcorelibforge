@@ -1,7 +1,0 @@
-package de.tisan.mcoref.plugins.commands;
-
-import net.minecraft.command.ICommandSender;
-
-public class BukkitCommandSender implements ICommandSender{
-
-}
