@@ -11,8 +11,8 @@
     - ServerChatEvent (fertig)
     - PotionBrewEvent (fertig)
     - EntityConstrcutingEvent (fertig)
-    - EntityEnteringChunkEvent
-    - EntityJoinWorldEvent
+    - EntityEnteringChunkEvent (fertig)
+    - EntityJoinWorldEvent (fertig)
     - EntityStruckByLightningEvent
     - EntityPlaySoundEvent
     - ItemDisappearEvent (ItemExpireEvent)

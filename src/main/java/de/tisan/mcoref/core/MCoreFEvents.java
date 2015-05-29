@@ -6,7 +6,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.CommandEvent;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
+import net.minecraftforge.event.entity.EntityEvent.EnteringChunk;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import de.tisan.mcoref.events.core.BukkitEventHandler;
@@ -14,10 +16,14 @@ import de.tisan.mcoref.events.core.Priority;
 import de.tisan.mcoref.events.properties.BukkitBlockInteractByPlayerEvent;
 import de.tisan.mcoref.events.properties.BukkitListener;
 import de.tisan.mcoref.events.properties.EntityConstructEvent;
+import de.tisan.mcoref.events.properties.EntityEnteringChunkEvent;
+import de.tisan.mcoref.events.properties.EntityStruckByLightningEvent;
 import de.tisan.mcoref.helpers.Bukkit;
 import de.tisan.mcoref.plugins.commands.Command;
 import de.tisan.mcoref.plugins.commands.CommandSender;
 import de.tisan.mcoref.plugins.entities.BukkitEntity;
+import de.tisan.mcoref.plugins.entities.effect.BukkitEntityLightningBolt;
+import de.tisan.mcoref.plugins.worlds.BukkitWorld;
 
 public class MCoreFEvents implements BukkitListener {
 	public MCoreFEvents() {
@@ -56,9 +62,24 @@ public class MCoreFEvents implements BukkitListener {
 		}
 		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.PotionBrewEvent(items.toArray(new ItemStack[items.size()]))));
 	}
-	
+
 	@SubscribeEvent
 	public void onEntityConstructEvent(EntityConstructing ev) {
 		ev.setCanceled(Bukkit.getEventManager().callEvent(new EntityConstructEvent(new BukkitEntity(ev.entity))));
+	}
+
+	@SubscribeEvent
+	public void onEntityEnteringChunkEvent(EnteringChunk ev) {
+		ev.setCanceled(Bukkit.getEventManager().callEvent(new EntityEnteringChunkEvent(new BukkitEntity(ev.entity), ev.newChunkX, ev.newChunkZ, ev.oldChunkX, ev.oldChunkZ)));
+	}
+
+	@SubscribeEvent
+	public void onEntityJoinWorldEvent(EntityJoinWorldEvent ev) {
+		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityJoinWorldEvent(new BukkitEntity(ev.entity), new BukkitWorld(ev.world))));
+	}
+
+	@SubscribeEvent
+	public void onEntityStruckByLightningEffect(net.minecraftforge.event.entity.EntityStruckByLightningEvent ev) {
+		ev.setCanceled(Bukkit.getEventManager().callEvent(new EntityStruckByLightningEvent(new BukkitEntity(ev.entity), new BukkitEntityLightningBolt(ev.lightning))));
 	}
 }
