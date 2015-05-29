@@ -28,8 +28,6 @@ public class TestPlugin extends BukkitJavaPlugin{
 		for(BukkitPlayer pl : Bukkit.getPlayers()){
 			Bukkit.broadcastMessage("Player " + pl.getName());
 		}
-	
-		
 	}
 
 	@Override
