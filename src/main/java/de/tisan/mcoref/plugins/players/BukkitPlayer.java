@@ -13,6 +13,10 @@ public class BukkitPlayer {
 
 	}
 
+	public String getName() {
+		return player.getCommandSenderName();
+	}
+
 	public java.lang.String getDisplayName() {
 		return player.getDisplayName();
 	}

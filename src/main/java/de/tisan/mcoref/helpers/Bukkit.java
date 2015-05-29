@@ -67,7 +67,7 @@ public class Bukkit {
 		return null;
 	}
 
-	@SideOnly(Side.SERVER)
+	//@SideOnly(Side.SERVER)
 	public static ArrayList<BukkitPlayer> getPlayers() {
 		if (Bukkit.isServer()) {
 			ArrayList<BukkitPlayer> players = new ArrayList<BukkitPlayer>();

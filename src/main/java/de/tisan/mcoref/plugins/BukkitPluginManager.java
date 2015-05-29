@@ -130,18 +130,15 @@ public class BukkitPluginManager {
 
 	private BukkitCommand[] getPropertyCommand(BukkitJavaPlugin plugin, ArrayList<String> strings, String key) {
 		ArrayList<BukkitCommand> tmp = new ArrayList<BukkitCommand>();
-		System.out.println("Searching for commands");
 		for (String s : strings) {
 			if (s.contains("=")) {
 				String[] spl = s.split("=", 2);
 				if (spl[0].equalsIgnoreCase(key)) {
-					System.out.println("New Command found!");
 					String[] spl2 = spl[1].split(",", 2);
 					tmp.add(Bukkit.getCommandManager().registerCommand(plugin, spl2[0], spl2[1]));
 				}
 			}
 		}
-		System.out.println("Returning");
 		return tmp.toArray(new BukkitCommand[tmp.size()]);
 	}
 
