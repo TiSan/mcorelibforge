@@ -31,6 +31,22 @@ public class BukkitItemStack {
 		} else if (mat.getMaterialType().equals(BukkitMaterialType.ITEM)) {
 			item = new ItemStack(mat.getMinecraftItem());
 		}
+
+	}
+
+	public BukkitItemStack(BukkitMaterial mat, int amount) {
+		if (amount > 0) {
+			if (mat.getMaterialType().equals(BukkitMaterialType.BLOCK)) {
+				item = new ItemStack(mat.getMinecraftBlock(), amount);
+			} else if (mat.getMaterialType().equals(BukkitMaterialType.ITEM)) {
+				item = new ItemStack(mat.getMinecraftItem(), amount);
+			}
+		}
+		if (mat.getMaterialType().equals(BukkitMaterialType.BLOCK)) {
+			item = new ItemStack(mat.getMinecraftBlock());
+		} else if (mat.getMaterialType().equals(BukkitMaterialType.ITEM)) {
+			item = new ItemStack(mat.getMinecraftItem());
+		}
 	}
 
 	public int getStackSize() {
@@ -55,5 +71,9 @@ public class BukkitItemStack {
 
 	public ItemStack getStack() {
 		return item;
+	}
+
+	public void addEnchantment(BukkitEnchantmentType ench, int level) {
+		item.addEnchantment(ench.getEnchchantment(), level);
 	}
 }
