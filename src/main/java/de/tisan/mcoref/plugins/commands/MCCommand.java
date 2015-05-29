@@ -1,5 +1,6 @@
 package de.tisan.mcoref.plugins.commands;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.command.ICommand;
@@ -37,7 +38,7 @@ public class MCCommand implements ICommand {
 
 	@Override
 	public List getCommandAliases() {
-		return null;
+		return new ArrayList<>();
 	}
 
 	@Override

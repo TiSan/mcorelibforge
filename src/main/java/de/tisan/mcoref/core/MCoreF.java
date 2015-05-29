@@ -82,6 +82,8 @@ public class MCoreF {
 	public void serverLoad(FMLServerStartingEvent event) {
 		for (BukkitCommand c : Bukkit.getCommandManager().getCommands()) {
 			Logger.info("Registering server command '" + c.getCommandName() + "' for plugin '" + c.getPlugin().getName() + "'");
+			System.out.println(event);
+			System.out.println(c);
 			event.registerServerCommand(c);
 		}
 	}
