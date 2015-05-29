@@ -4,13 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.world.World;
-import de.tisan.mcoref.events.properties.BukkitBlockInteractByPlayerEvent;
-import de.tisan.mcoref.events.properties.BukkitBlockInteractEvent;
 import de.tisan.mcoref.events.properties.BukkitEvent;
 import de.tisan.mcoref.events.properties.BukkitListener;
-import de.tisan.mcoref.plugins.blocks.BukkitBlock;
 
 public class BukkitEventManager {
 	private ArrayList<LiWiMeCom> methods;
@@ -42,34 +37,23 @@ public class BukkitEventManager {
 	 * @param attr
 	 * @return
 	 */
-	public boolean callEvent(Class<? extends BukkitEvent> cla, Object... attr) {
+	public boolean callEvent(BukkitEvent attr) {
 		boolean cancel = false;
-		if (cla != null) {
-			if (cla == BukkitBlockInteractEvent.class) {
-				for (LiWiMeCom m : getMethodsByClass(cla)) {
-					try {
-						System.out.println(cla.getName());
-						if ((cla == BukkitBlockInteractByPlayerEvent.class) && (attr.length > 6)) {
-							BukkitBlockInteractByPlayerEvent event = new BukkitBlockInteractByPlayerEvent((BukkitBlock) attr[0], (World) attr[1], (Integer) attr[2], (Integer) attr[3], (Integer) attr[4], (EntityPlayer) attr[5],
-									(Integer) attr[6]);
-							m.getMethod().invoke(m.getListener(), event);
-							cancel = event.isCancelled();
-						} else if ((cla == BukkitBlockInteractEvent.class) && (attr.length > 0)) {
-							BukkitBlockInteractEvent event = new BukkitBlockInteractEvent((BukkitBlock) attr[0]);
-							m.getMethod().invoke(m.getListener(), event);
-							cancel = event.isCancelled();
-						}
-
-						if (cancel) {
-							System.out.println("Event cancelled!");
-							break;
-						}
-					} catch (IllegalAccessException e) {
-					} catch (IllegalArgumentException e) {
-					} catch (InvocationTargetException e) {
+		if (attr != null) {
+			for (LiWiMeCom m : getMethodsByClass(attr.getClass())) {
+				try {
+					m.getMethod().invoke(m.getListener(), attr);
+					cancel = attr.isCancelled();
+					if (cancel) {
+						System.out.println("Event cancelled!");
+						break;
 					}
+				} catch (IllegalAccessException e) {
+				} catch (IllegalArgumentException e) {
+				} catch (InvocationTargetException e) {
 				}
 			}
+
 		}
 		return cancel;
 	}

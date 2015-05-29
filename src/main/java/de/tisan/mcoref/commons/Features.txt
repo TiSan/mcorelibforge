@@ -1,0 +1,87 @@
+~~~~ MCoreF Upcoming features and ideas
+ ~ Developed by TiSan and mcNETdev
+ 
+ 
+ Ideas:
+  - Events (!)
+    - Bei den DamageEvents einen DamageCause übergeben mit den Einzelheiten des Todes!
+    
+    
+    - CommandPreProcessEvent (fertig)
+    - ServerChatEvent
+    - PotionPreBrewEvent
+    - PotionPostBrewEvent
+    - EntityConstrcutingEvent
+    - EntityEnteringChunkEvent
+    - EntityJoinWorldEvent
+    - EntityStruckByLightningEvent
+    - EntityPlaySoundEvent
+    - ItemDisappearEvent (ItemExpireEvent)
+    - ItemDropEvent (ItemTossEvent)
+    - EnderTeleportEvent
+    - EntityAttackedEvent (LivingAttackEvent)
+    - EntityDeathEvent (LivingDeathEvent)
+    - EntityDropItemEvent (LivingDropEvent) //onDeath
+    - EntityUpdateEvent (LivingUpdateEvent)
+    - EntityDamageByFallEvent (LivingFallEvent)
+    - LivingHealEvent
+    - EntityDamageEvent (LivingHurtEvent)
+    - LivingSetAttackTargetEvent
+    - EntitySpawnEvent (LivingSpawnEvent)
+    - CheckSpawnEntityEvent (CheckSpawnEvent)
+    - EntitySpawnByMobSpawnerEvent (SpecialSpawn)
+    - EnityDespawnEvent (LivingAllowDespawnEvent)
+    - MinecartCollisionEvent
+    - MinecartEvent
+    - MinecartInteractEvent
+    - MinecartUpdateEvent
+    -- Player Events
+    - PlayerAchievmentEvent (AchievementEvent)
+    - AnvilRepairEvent
+    - ArrowLooseEvent
+    - ArrowKnockEvent
+    - AttackEntityEvent
+    - BoneMealEvent
+    - EntityInteractEvent
+    - EntityItemPickupEvent
+    - FillBucketEvent
+    - ItemTooltipEvent
+    - PlayerDestroyItemEvent
+    - PlayerDropsEvent
+    - BlockBreakByPlayerEvent (HarvestCheck)
+    - BreakSpeed
+    - PlayerRefreshDisplayNameEvent (NameFormat)
+    - PlayerRespawnEvent (PlayerClone)
+    - PlayerFallInGameModeEvent (PlayerFlyableFallEvent)
+    - PlayerInteractEvent
+    - PlayerOpenContainerEvent
+    - PlayerPickupXPEvent
+    - PlayerSleepInBedEvent
+    - PlayerUseItemEvent
+    - PlayerUseHoeEvent (UseHoeEvent)
+    -- TerrainGen
+    - ChunkProviderEvent
+    - ReplaceBiomeBlocks
+    - Decorate
+    - DefendBiomeDecorator
+    - InitMapGen
+    - GenerateMineableEvent
+    - PopulateChunkEvent
+    - SaplingGrowTreeEvent
+    - InitBiomeGens
+    - HarvestDropsEvent
+    - BlockBreakEvent (BreakEvent)
+    - BlockPlaceEvent (PlaceEvent)
+    - BlockMultiPlaceEvent (MultiPlaceEvent)
+    - ChunkLoad
+    - ChunkUnload
+    - DetonateEvent
+    - NotePlayEvent
+    - NoteChangedEvent
+    - WorldLoadEvent
+    - WorldUnloadEvent
+    - WorldSaveEvent
+    - PotentialSpawns
+    - CreatureSpawnPosition
+    - ChatClickEvent (ClickEvent)
+    - ChatHoverEvent (HoverEvent)
