@@ -13,8 +13,8 @@
     - EntityConstrcutingEvent (fertig)
     - EntityEnteringChunkEvent (fertig)
     - EntityJoinWorldEvent (fertig)
-    - EntityStruckByLightningEvent
-    - EntityPlaySoundEvent
+    - EntityStruckByLightningEvent (fertig)
+    - EntityPlaySoundEvent (fertig)
     - ItemDisappearEvent (ItemExpireEvent)
     - ItemDropEvent (ItemTossEvent)
     - EnderTeleportEvent

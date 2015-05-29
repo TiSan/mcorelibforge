@@ -9,6 +9,7 @@ import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.EntityEvent.EnteringChunk;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import de.tisan.mcoref.events.core.BukkitEventHandler;
@@ -17,6 +18,7 @@ import de.tisan.mcoref.events.properties.BukkitBlockInteractByPlayerEvent;
 import de.tisan.mcoref.events.properties.BukkitListener;
 import de.tisan.mcoref.events.properties.EntityConstructEvent;
 import de.tisan.mcoref.events.properties.EntityEnteringChunkEvent;
+import de.tisan.mcoref.events.properties.EntityPlaySoundEffect;
 import de.tisan.mcoref.events.properties.EntityStruckByLightningEvent;
 import de.tisan.mcoref.helpers.Bukkit;
 import de.tisan.mcoref.plugins.commands.Command;
@@ -81,5 +83,10 @@ public class MCoreFEvents implements BukkitListener {
 	@SubscribeEvent
 	public void onEntityStruckByLightningEffect(net.minecraftforge.event.entity.EntityStruckByLightningEvent ev) {
 		ev.setCanceled(Bukkit.getEventManager().callEvent(new EntityStruckByLightningEvent(new BukkitEntity(ev.entity), new BukkitEntityLightningBolt(ev.lightning))));
+	}
+
+	@SubscribeEvent
+	public void onEntityPlaySoundEffect(PlaySoundAtEntityEvent ev) {
+		ev.setCanceled(Bukkit.getEventManager().callEvent(new EntityPlaySoundEffect(new BukkitEntity(ev.entity), ev.name, ev.volume, ev.pitch, ev.newVolume, ev.newPitch)));
 	}
 }
