@@ -1,6 +1,7 @@
 package de.tisan.mcoref.plugins.item;
 
 import net.minecraft.item.ItemStack;
+import de.tisan.mcoref.helpers.MaterialHelper;
 import de.tisan.mcoref.plugins.blocks.BukkitMaterial;
 import de.tisan.mcoref.plugins.blocks.BukkitMaterialType;
 
@@ -16,7 +17,6 @@ public class BukkitItemStack {
 	 */
 	public BukkitItemStack(ItemStack item) {
 		this.item = item;
-		// TODO item.addEnchantment(Enchantment,int)
 	}
 
 	/**
@@ -75,5 +75,25 @@ public class BukkitItemStack {
 
 	public void addEnchantment(BukkitEnchantmentType ench, int level) {
 		item.addEnchantment(ench.getEnchchantment(), level);
+	}
+
+	public BukkitMaterial getMaterial() {
+		return MaterialHelper.getBukkitMaterial(item.getItem());
+	}
+
+	public String getUnlocalizedName() {
+		return item.getUnlocalizedName();
+	}
+
+	public boolean isStackable() {
+		return item.isStackable();
+	}
+
+	public int getMaxStackSize() {
+		return item.getMaxStackSize();
+	}
+
+	public BukkitItemStack splitStack(int amount) {
+		return new BukkitItemStack(item.splitStack(amount));
 	}
 }

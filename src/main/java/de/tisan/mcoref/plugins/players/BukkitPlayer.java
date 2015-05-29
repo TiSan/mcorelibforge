@@ -64,30 +64,16 @@ public class BukkitPlayer {
 		return player.isBlocking();
 	}
 
-	public void onUpdate() {
-		player.onUpdate();
-	}
-
-	public void playSound(java.lang.String arg0, float arg1, float arg2) {
-		player.playSound(arg0, arg1, arg2);
+	public void playSound(String name, float volume, float pitch) {
+		player.playSound(name, volume, pitch);
 	}
 
 	public int getPortalCooldown() {
 		return player.getPortalCooldown();
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void handleHealthUpdate(byte arg0) {
-		player.handleHealthUpdate(arg0);
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void preparePlayerToSpawn() {
-		player.preparePlayerToSpawn();
-	}
-
-	public net.minecraft.entity.item.EntityItem dropPlayerItemWithRandomChoice(net.minecraft.item.ItemStack arg0, boolean arg1) {
-		return player.dropPlayerItemWithRandomChoice(arg0, arg1);
+	public void dropPlayerItemWithRandomChoice(BukkitItemStack item) {
+		player.dropPlayerItemWithRandomChoice(item.getStack(), true);
 	}
 
 	public void joinEntityItemWithWorld(net.minecraft.entity.item.EntityItem arg0) {
