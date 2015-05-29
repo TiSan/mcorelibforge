@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import cpw.mods.fml.relauncher.Side;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class Communication {
 
@@ -18,16 +18,16 @@ public class Communication {
 		this.name = name;
 		events = new ArrayList<CommunicationEvent>();
 		channel = NetworkRegistry.INSTANCE.newSimpleChannel("BUKKITCHAN:" + name);
-		//if (Bukkit.isServer()) {
-			ClientToServerHandler handler = new ClientToServerHandler();
-			handler.setCommInstance(this);
-			channel.registerMessage(handler, ClientToServerMessage.class, 0, Side.SERVER);
-			
-		//} else {
-			ServerToClientHandler handler2 = new ServerToClientHandler();
-			handler2.setCommInstance(this);
-			channel.registerMessage(handler2, ServerToClientMessage.class, 1, Side.CLIENT);
-		//}
+		// if (Bukkit.isServer()) {
+		ClientToServerHandler handler = new ClientToServerHandler();
+		handler.setCommInstance(this);
+		channel.registerMessage(handler, ClientToServerMessage.class, 0, Side.SERVER);
+
+		// } else {
+		ServerToClientHandler handler2 = new ServerToClientHandler();
+		handler2.setCommInstance(this);
+		channel.registerMessage(handler2, ServerToClientMessage.class, 1, Side.CLIENT);
+		// }
 
 	}
 

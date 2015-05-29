@@ -3,12 +3,15 @@ package de.tisan.mcoref.plugins.commands;
 import java.util.List;
 
 import net.minecraft.command.ICommand;
+import net.minecraft.util.BlockPos;
 
 public class Command {
 	private ICommand command;
-	public Command(ICommand command){
+
+	public Command(ICommand command) {
 		this.command = command;
 	}
+
 	public int compareTo(Object arg0) {
 		return command.compareTo(arg0);
 	}
@@ -29,8 +32,9 @@ public class Command {
 		return command.canCommandSenderUseCommand(p_71519_1_.getSender());
 	}
 
-	public List addTabCompletionOptions(CommandSender p_71516_1_, String[] p_71516_2_) {
-		return command.addTabCompletionOptions(p_71516_1_.getSender(), p_71516_2_);
+	// TODO
+	public List addTabCompletionOptions(CommandSender p_71516_1_, String[] p_71516_2_, BlockPos pos) {
+		return command.addTabCompletionOptions(p_71516_1_.getSender(), p_71516_2_, pos);
 	}
 
 	public boolean isUsernameIndex(String[] p_82358_1_, int p_82358_2_) {

@@ -1,14 +1,16 @@
 package de.tisan.mcoref.plugins.commands;
 
+import net.minecraft.command.CommandResultStats.Type;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 public class BukkitCommandSender implements ICommandSender {
 	public static BukkitCommandSender convert(ICommandSender sender) {
 		BukkitCommandSender newSender = new BukkitCommandSender(sender);
-
 		return newSender;
 	}
 
@@ -17,16 +19,6 @@ public class BukkitCommandSender implements ICommandSender {
 	private BukkitCommandSender(ICommandSender sender) {
 		this.sender = sender;
 
-	}
-
-	@Override
-	public String getCommandSenderName() {
-		return sender.getCommandSenderName();
-	}
-
-	@Override
-	public IChatComponent func_145748_c_() {
-		return sender.func_145748_c_();
 	}
 
 	@Override
@@ -40,13 +32,45 @@ public class BukkitCommandSender implements ICommandSender {
 	}
 
 	@Override
-	public ChunkCoordinates getPlayerCoordinates() {
-		return sender.getPlayerCoordinates();
+	public World getEntityWorld() {
+		return sender.getEntityWorld();
+	}
+
+	// NEW
+
+	@Override
+	public String getName() {
+		return sender.getName();
 	}
 
 	@Override
-	public World getEntityWorld() {
-		return sender.getEntityWorld();
+	public IChatComponent getDisplayName() {
+		return sender.getDisplayName();
+	}
+
+	@Override
+	public BlockPos getPosition() {
+		return sender.getPosition();
+	}
+
+	@Override
+	public Vec3 getPositionVector() {
+		return sender.getPositionVector();
+	}
+
+	@Override
+	public Entity getCommandSenderEntity() {
+		return sender.getCommandSenderEntity();
+	}
+
+	@Override
+	public boolean sendCommandFeedback() {
+		return sender.sendCommandFeedback();
+	}
+
+	@Override
+	public void func_174794_a(Type p_174794_1_, int p_174794_2_) {
+		System.out.println("func_174794_a in BukkitCommandSender " + p_174794_1_.func_179637_b() + ";" + p_174794_2_);
 	}
 
 }

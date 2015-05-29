@@ -2,16 +2,16 @@ package de.tisan.mcoref.communication;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
-import cpw.mods.fml.common.network.ByteBufUtils;
-import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.ByteBufUtils;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 public class ClientToServerMessage implements IMessage {
 	private NBTTagCompound tag;
 
-	public ClientToServerMessage(){
-		
+	public ClientToServerMessage() {
+
 	}
-	
+
 	public ClientToServerMessage(NBTTagCompound tag) {
 		this.tag = tag;
 	}
@@ -29,7 +29,5 @@ public class ClientToServerMessage implements IMessage {
 	public NBTTagCompound getTag() {
 		return tag;
 	}
-
-	
 
 }

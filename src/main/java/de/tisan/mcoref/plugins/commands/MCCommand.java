@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.util.BlockPos;
 import de.tisan.mcoref.plugins.BukkitJavaPlugin;
 
 public class MCCommand implements ICommand {
@@ -50,11 +51,6 @@ public class MCCommand implements ICommand {
 	}
 
 	@Override
-	public List addTabCompletionOptions(ICommandSender p_71516_1_, String[] p_71516_2_) {
-		return null;
-	}
-
-	@Override
 	public boolean isUsernameIndex(String[] p_82358_1_, int p_82358_2_) {
 		return false;
 	}
@@ -73,6 +69,11 @@ public class MCCommand implements ICommand {
 
 	public BukkitJavaPlugin getPlugin() {
 		return plugin;
+	}
+
+	@Override
+	public List addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
+		return null;
 	}
 
 }

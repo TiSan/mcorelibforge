@@ -1,14 +1,13 @@
 package de.tisan.mcoref.core;
 
 import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import de.tisan.mcoref.commons.MCoreFProperty;
 import de.tisan.mcoref.communication.Communication;
 import de.tisan.mcoref.communication.CommunicationManager;
@@ -23,7 +22,7 @@ public class MCoreF {
 	@Instance(value = MCoreFProperty.MODID)
 	public static MCoreF instance;
 	public static boolean DEBUG_MODE = false;
-	@SidedProxy(clientSide = MCoreFProperty.CLIENTPROXY, serverSide = MCoreFProperty.SERVERPROXY)
+	@net.minecraftforge.fml.common.SidedProxy(clientSide = MCoreFProperty.CLIENTPROXY, serverSide = MCoreFProperty.SERVERPROXY)
 	public static MCoreFProxy proxy;
 
 	private Communication comm;
@@ -40,12 +39,12 @@ public class MCoreF {
 		events = new MCoreFEvents();
 		MinecraftForge.EVENT_BUS.register(events);
 		Bukkit.initCommandManager();
-		if(Bukkit.isClient() && !MCoreF.DEBUG_MODE){
+		if (Bukkit.isClient() && !MCoreF.DEBUG_MODE) {
 			BukkitJavaPluginLoader.downloadPlugins(Bukkit.getMinecraftMultiplayerServerListEntries());
 		}
-		
+
 		Bukkit.initPluginManager();
-		
+
 	}
 
 	/**
@@ -81,7 +80,7 @@ public class MCoreF {
 	 */
 	@EventHandler
 	public void serverLoad(FMLServerStartingEvent event) {
-		for(BukkitCommand c : Bukkit.getCommandManager().getCommands()){
+		for (BukkitCommand c : Bukkit.getCommandManager().getCommands()) {
 			Logger.info("Registering server command '" + c.getCommandName() + "' for plugin '" + c.getPlugin().getName() + "'");
 			event.registerServerCommand(c);
 		}

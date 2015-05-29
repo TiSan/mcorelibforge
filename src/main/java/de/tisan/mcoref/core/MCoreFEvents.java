@@ -2,7 +2,7 @@ package de.tisan.mcoref.core;
 
 import net.minecraftforge.event.CommandEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import de.tisan.mcoref.events.core.BukkitEventHandler;
 import de.tisan.mcoref.events.core.Priority;
 import de.tisan.mcoref.events.properties.BukkitBlockInteractByPlayerEvent;

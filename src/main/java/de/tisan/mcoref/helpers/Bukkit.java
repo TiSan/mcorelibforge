@@ -9,9 +9,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import de.tisan.mcoref.events.core.BukkitEventManager;
 import de.tisan.mcoref.plugins.BukkitPluginManager;
 import de.tisan.mcoref.plugins.commands.BukkitCommandManager;
@@ -67,7 +67,7 @@ public class Bukkit {
 		return null;
 	}
 
-	//@SideOnly(Side.SERVER)
+	// @SideOnly(Side.SERVER)
 	public static ArrayList<BukkitPlayer> getPlayers() {
 		if (Bukkit.isServer()) {
 			ArrayList<BukkitPlayer> players = new ArrayList<BukkitPlayer>();
