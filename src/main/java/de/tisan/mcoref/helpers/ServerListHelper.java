@@ -81,4 +81,3 @@ public class ServerListHelper {
 		return true;
 	}
 }
-
