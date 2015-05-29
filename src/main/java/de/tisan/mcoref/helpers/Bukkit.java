@@ -41,7 +41,7 @@ public class Bukkit {
 			for (Object pl : MinecraftServer.getServer().getConfigurationManager().playerEntityList) {
 				if (pl instanceof BukkitPlayer) {
 					BukkitPlayer p = (BukkitPlayer) pl;
-					if (p.getCommandSenderName().equals(name)) {
+					if (p.getName().equals(name)) {
 						return p;
 					}
 				}
