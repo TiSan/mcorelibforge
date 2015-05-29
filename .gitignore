@@ -24,3 +24,5 @@
 !/libs/
 !/libs/*
 !/.gitignore
+/eclipse/config/
+/eclipse/config/*
