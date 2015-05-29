@@ -92,4 +92,9 @@ public enum BukkitMaterial {
 	public Material getMinecraftMaterial() {
 		return (block != null ? block.getMaterial() : null);
 	}
+
+	public BukkitMaterialType getMaterialType() {
+		return materialType;
+	}
+
 }

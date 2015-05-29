@@ -1,7 +1,11 @@
 package de.tisan.mcoref.plugins.players;
 
+import java.util.UUID;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import de.tisan.mcoref.plugins.item.BukkitItemStack;
 
 public class BukkitPlayer {
 
@@ -16,16 +20,16 @@ public class BukkitPlayer {
 		return player.getName();
 	}
 
-	public net.minecraft.util.IChatComponent getDisplayName() {
-		return player.getDisplayName();
+	public String getDisplayName() {
+		return player.getDisplayName().getUnformattedTextForChat();
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public int getItemInUseCount() {
 		return player.getItemInUseCount();
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public int getItemInUseDuration() {
 		return player.getItemInUseDuration();
 	}
@@ -34,18 +38,14 @@ public class BukkitPlayer {
 		return player.getMaxInPortalTime();
 	}
 
-	public void attackTargetEntityWithCurrentItem(net.minecraft.entity.Entity arg0) {
-		player.attackTargetEntityWithCurrentItem(arg0);
-	}
-
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public boolean hasReducedDebug() {
 		return player.hasReducedDebug();
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
-	public net.minecraft.item.ItemStack getItemInUse() {
-		return player.getItemInUse();
+	@SideOnly(Side.CLIENT)
+	public BukkitItemStack getItemInUse() {
+		return new BukkitItemStack(player.getItemInUse());
 	}
 
 	public boolean isUsingItem() {
@@ -76,12 +76,12 @@ public class BukkitPlayer {
 		return player.getPortalCooldown();
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public void handleHealthUpdate(byte arg0) {
 		player.handleHealthUpdate(arg0);
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public void preparePlayerToSpawn() {
 		player.preparePlayerToSpawn();
 	}
@@ -110,8 +110,8 @@ public class BukkitPlayer {
 		player.displayVillagerTradeGui(arg0);
 	}
 
-	public net.minecraft.item.ItemStack getCurrentEquippedItem() {
-		return player.getCurrentEquippedItem();
+	public BukkitItemStack getCurrentEquippedItem() {
+		return new BukkitItemStack(player.getCurrentEquippedItem());
 	}
 
 	public void destroyCurrentEquippedItem() {
@@ -126,7 +126,7 @@ public class BukkitPlayer {
 		return player.isEntityInsideOpaqueBlock();
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public float getBedOrientationInDegrees() {
 		return player.getBedOrientationInDegrees();
 	}
@@ -248,7 +248,7 @@ public class BukkitPlayer {
 		player.onCriticalHit(arg0);
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public void respawnPlayer() {
 		player.respawnPlayer();
 	}
@@ -257,7 +257,7 @@ public class BukkitPlayer {
 		player.setDead();
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public boolean func_175144_cb() {
 		return player.func_175144_cb();
 	}
@@ -282,7 +282,7 @@ public class BukkitPlayer {
 		return player.isPlayerSleeping();
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public int getSleepTimer() {
 		return player.getSleepTimer();
 	}
@@ -400,7 +400,7 @@ public class BukkitPlayer {
 		player.addExperienceLevel(arg0);
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public boolean getAlwaysRenderNameTagForRender() {
 		return player.getAlwaysRenderNameTagForRender();
 	}
@@ -421,7 +421,7 @@ public class BukkitPlayer {
 		player.setCurrentItemOrArmor(arg0, arg1);
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public boolean isInvisibleToPlayer(net.minecraft.entity.player.EntityPlayer arg0) {
 		return player.isInvisibleToPlayer(arg0);
 	}
@@ -486,7 +486,7 @@ public class BukkitPlayer {
 		return EntityPlayer.getUUID(arg0);
 	}
 
-	public static java.util.UUID getOfflineUUID(java.lang.String arg0) {
+	public static UUID getOfflineUUID(String arg0) {
 		return EntityPlayer.getOfflineUUID(arg0);
 	}
 
@@ -494,12 +494,12 @@ public class BukkitPlayer {
 		return player.canOpen(arg0);
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public boolean func_175148_a(net.minecraft.entity.player.EnumPlayerModelParts arg0) {
 		return player.func_175148_a(arg0);
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public void setReducedDebug(boolean arg0) {
 		player.setReducedDebug(arg0);
 	}
