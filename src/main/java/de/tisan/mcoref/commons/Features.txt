@@ -8,10 +8,9 @@
     
     
     - CommandPreProcessEvent (fertig)
-    - ServerChatEvent
-    - PotionPreBrewEvent
-    - PotionPostBrewEvent
-    - EntityConstrcutingEvent
+    - ServerChatEvent (fertig)
+    - PotionBrewEvent (fertig)
+    - EntityConstrcutingEvent (fertig)
     - EntityEnteringChunkEvent
     - EntityJoinWorldEvent
     - EntityStruckByLightningEvent
