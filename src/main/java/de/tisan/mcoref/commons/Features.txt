@@ -18,9 +18,9 @@
     - ItemDisappearEvent (ItemExpireEvent) (fertig)
     - ItemDropEvent (ItemTossEvent) (fertig)
     - EnderTeleportEvent (fertig)
-    - EntityAttackedEvent (LivingAttackEvent)
-    - EntityDeathEvent (LivingDeathEvent)
-    - EntityDropItemEvent (LivingDropEvent) //onDeath
+    - EntityAttackedEvent (LivingAttackEvent) (fertig)
+    - EntityDeathEvent (LivingDeathEvent) (fertig) 
+    - EntityDropItemEvent (LivingDropEvent) //onDeath (fertig)
     - EntityUpdateEvent (LivingUpdateEvent)
     - EntityDamageByFallEvent (LivingFallEvent)
     - LivingHealEvent

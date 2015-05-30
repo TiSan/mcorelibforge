@@ -34,7 +34,7 @@ public class Bukkit {
 		}
 
 	}
-
+	
 	public static BukkitPlayer getPlayer(String name) {
 		if (Bukkit.isServer()) {
 			for (Object pl : MinecraftServer.getServer().getConfigurationManager().playerEntityList) {
@@ -147,4 +147,6 @@ public class Bukkit {
 
 		return groups;
 	}
+	
+	
 }

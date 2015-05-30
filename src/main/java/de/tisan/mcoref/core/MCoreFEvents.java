@@ -13,6 +13,9 @@ import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
@@ -28,6 +31,7 @@ import de.tisan.mcoref.events.properties.EntityStruckByLightningEvent;
 import de.tisan.mcoref.helpers.Bukkit;
 import de.tisan.mcoref.plugins.commands.Command;
 import de.tisan.mcoref.plugins.commands.CommandSender;
+import de.tisan.mcoref.plugins.damage.DamageCause;
 import de.tisan.mcoref.plugins.entities.BukkitEntity;
 import de.tisan.mcoref.plugins.entities.BukkitEntityItem;
 import de.tisan.mcoref.plugins.entities.BukkitEntityLivingBase;
@@ -121,6 +125,22 @@ public class MCoreFEvents implements BukkitListener {
 	@SubscribeEvent
 	public void onEnderTeleportEvent(EnderTeleportEvent ev) {
 		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EnderTeleportEvent(new BukkitEntityLivingBase(ev.entityLiving), ev.targetX, ev.targetY, ev.targetZ, ev.attackDamage)));
+	}
+
+	@SubscribeEvent
+	public void onEntityAttackEvent(LivingAttackEvent ev) {
+		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityAttackEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source), ev.ammount)));
+	}
+
+	@SubscribeEvent
+	public void onEntityDeathEvent(LivingDeathEvent ev) {
+		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityDeathEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source))));
+	}
+
+	@SubscribeEvent
+	public void onEntityDeathDropItemEvent(LivingDropsEvent ev) {
+		ev.setCanceled(Bukkit.getEventManager().callEvent(
+				new de.tisan.mcoref.events.properties.EntityDeathDropItemEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source), ev.drops, ev.lootingLevel, ev.recentlyHit)));
 	}
 
 }
