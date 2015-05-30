@@ -84,7 +84,7 @@ public class MCoreFEvents implements BukkitListener {
 
 	@SubscribeEvent
 	public void onEntityEnteringChunkEvent(EnteringChunk ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(new EntityEnteringChunkEvent(new BukkitEntity(ev.entity), ev.newChunkX, ev.newChunkZ, ev.oldChunkX, ev.oldChunkZ)));
+		Bukkit.getEventManager().callEvent(new EntityEnteringChunkEvent(new BukkitEntity(ev.entity), ev.newChunkX, ev.newChunkZ, ev.oldChunkX, ev.oldChunkZ));
 	}
 
 	@SubscribeEvent

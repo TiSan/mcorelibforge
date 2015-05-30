@@ -3,6 +3,9 @@ package de.tisan.mcoref.plugins.entities;
 import java.util.UUID;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -523,4 +526,24 @@ public class BukkitEntity {
 		return entity.getEyeHeight();
 	}
 
+	public BukkitPlayer castToPlayer() {
+		if (entity instanceof EntityPlayer) {
+			return new BukkitPlayer((EntityPlayer) entity);
+		}
+		return null;
+	}
+
+	public BukkitEntityLivingBase castToLivingBase() {
+		if (entity instanceof EntityLivingBase) {
+			return new BukkitEntityLivingBase((EntityLivingBase) entity);
+		}
+		return null;
+	}
+
+	public BukkitEntityItem castToItem() {
+		if (entity instanceof EntityItem) {
+			return new BukkitEntityItem((EntityItem) entity);
+		}
+		return null;
+	}
 }
