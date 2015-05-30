@@ -1,13 +1,14 @@
 package de.tisan.mcoref.plugins.entities;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraftforge.fml.relauncher.Side;
-
-public class BukkitEntityItem {
+public class BukkitEntityItem extends BukkitEntity{
 
 	private EntityItem item;
 
 	public BukkitEntityItem(EntityItem item) {
+		super((Entity)item);
 		this.item = item;
 	}
 
@@ -15,6 +16,7 @@ public class BukkitEntityItem {
 		return item;
 	}
 
+	@Override
 	public java.lang.String getName() {
 		return item.getName();
 	}
@@ -31,10 +33,12 @@ public class BukkitEntityItem {
 		item.onCollideWithPlayer(arg0);
 	}
 
+	@Override
 	public void travelToDimension(int arg0) {
 		item.travelToDimension(arg0);
 	}
 
+	@Override
 	public boolean canAttackWithItem() {
 		return item.canAttackWithItem();
 	}
@@ -55,6 +59,7 @@ public class BukkitEntityItem {
 		item.setDefaultPickupDelay();
 	}
 
+	@Override
 	public boolean handleWaterMovement() {
 		return item.handleWaterMovement();
 	}
@@ -63,6 +68,7 @@ public class BukkitEntityItem {
 		return item.attackEntityFrom(arg0, arg1);
 	}
 
+	@Override
 	public void onUpdate() {
 		item.onUpdate();
 	}

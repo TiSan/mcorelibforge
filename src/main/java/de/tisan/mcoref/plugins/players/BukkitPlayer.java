@@ -3,6 +3,7 @@ package de.tisan.mcoref.plugins.players;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
@@ -12,11 +13,12 @@ import de.tisan.mcoref.core.MCoreF;
 import de.tisan.mcoref.plugins.blocks.BukkitMaterial;
 import de.tisan.mcoref.plugins.blocks.BukkitMaterialType;
 import de.tisan.mcoref.plugins.entities.BExtendedProperties;
+import de.tisan.mcoref.plugins.entities.BukkitEntityLivingBase;
 import de.tisan.mcoref.plugins.item.BukkitItemStack;
 import de.tisan.mcoref.plugins.location.Location;
 import de.tisan.mcoref.plugins.worlds.BukkitWorld;
 
-public class BukkitPlayer {
+public class BukkitPlayer extends BukkitEntityLivingBase {
 
 	private EntityPlayer player;
 
@@ -25,10 +27,12 @@ public class BukkitPlayer {
 	}
 
 	public BukkitPlayer(EntityPlayer pl) {
+		super((EntityLivingBase) pl);
 		player = pl;
 
 	}
 
+	@Override
 	public String getName() {
 		return player.getName();
 	}
@@ -38,6 +42,7 @@ public class BukkitPlayer {
 	 * 
 	 * @return
 	 */
+	@Override
 	public String getDisplayName() {
 		return player.getDisplayName().getUnformattedTextForChat();
 	}
@@ -47,10 +52,12 @@ public class BukkitPlayer {
 		return player.getItemInUseCount();
 	}
 
+	@Override
 	public String registerExtendedProperties(String name, BExtendedProperties prop) {
 		return player.registerExtendedProperties(name, prop);
 	}
 
+	@Override
 	public BExtendedProperties getExtendedProperties(String name) {
 		if (player.getExtendedProperties(name) instanceof BExtendedProperties) {
 			BExtendedProperties prop = (BExtendedProperties) player.getExtendedProperties(name);
@@ -64,6 +71,7 @@ public class BukkitPlayer {
 		return player.getItemInUseDuration();
 	}
 
+	@Override
 	public int getMaxInPortalTime() {
 		return player.getMaxInPortalTime();
 	}
@@ -94,10 +102,12 @@ public class BukkitPlayer {
 		return player.isBlocking();
 	}
 
+	@Override
 	public void playSound(String name, float volume, float pitch) {
 		player.playSound(name, volume, pitch);
 	}
 
+	@Override
 	public int getPortalCooldown() {
 		return player.getPortalCooldown();
 	}
@@ -106,6 +116,7 @@ public class BukkitPlayer {
 		player.dropPlayerItemWithRandomChoice(item.getStack(), true);
 	}
 
+	@Override
 	public int getTotalArmorValue() {
 		return player.getTotalArmorValue();
 	}
@@ -122,6 +133,7 @@ public class BukkitPlayer {
 		player.destroyCurrentEquippedItem();
 	}
 
+	@Override
 	public boolean isEntityInsideOpaqueBlock() {
 		return player.isEntityInsideOpaqueBlock();
 	}
@@ -143,10 +155,12 @@ public class BukkitPlayer {
 		player.closeScreen();
 	}
 
+	@Override
 	public void updateRidden() {
 		player.updateRidden();
 	}
 
+	@Override
 	public void onLivingUpdate() {
 		player.onLivingUpdate();
 	}
@@ -174,10 +188,12 @@ public class BukkitPlayer {
 		return player.canAttackPlayer(arg0.getPlayer());
 	}
 
+	@Override
 	public double getYOffset() {
 		return player.getYOffset();
 	}
 
+	@Override
 	public void setDead() {
 		player.setDead();
 	}
@@ -186,6 +202,7 @@ public class BukkitPlayer {
 		player.wakeUpPlayer(arg0, arg1, arg2);
 	}
 
+	@Override
 	public boolean isPlayerSleeping() {
 		return player.isPlayerSleeping();
 	}
@@ -215,6 +232,7 @@ public class BukkitPlayer {
 		player.jump();
 	}
 
+	@Override
 	public float getAIMoveSpeed() {
 		return player.getAIMoveSpeed();
 	}
@@ -223,14 +241,17 @@ public class BukkitPlayer {
 		player.addMovementStat(arg0, arg1, arg2);
 	}
 
+	@Override
 	public void fall(float arg0, float arg1) {
 		player.fall(arg0, arg1);
 	}
 
+	@Override
 	public void setInWeb() {
 		player.setInWeb();
 	}
 
+	@Override
 	public BukkitItemStack getCurrentArmor(int arg0) {
 		return new BukkitItemStack(player.getCurrentArmor(arg0));
 	}
@@ -291,6 +312,7 @@ public class BukkitPlayer {
 		player.addExperienceLevel(arg0);
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean getAlwaysRenderNameTagForRender() {
 		return player.getAlwaysRenderNameTagForRender();
@@ -309,6 +331,7 @@ public class BukkitPlayer {
 		return player.getInventoryEnderChest();
 	}
 
+	@Override
 	public BukkitItemStack getEquipmentInSlot(int arg0) {
 		return new BukkitItemStack(player.getEquipmentInSlot(arg0));
 	}
@@ -317,23 +340,28 @@ public class BukkitPlayer {
 		player.setCurrentItemOrArmor(arg0, arg1.getStack());
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean isInvisibleToPlayer(BukkitPlayer arg0) {
 		return player.isInvisibleToPlayer(arg0.getPlayer());
 	}
 
+	@Override
 	public void setAbsorptionAmount(float arg0) {
 		player.setAbsorptionAmount(arg0);
 	}
 
+	@Override
 	public float getAbsorptionAmount() {
 		return player.getAbsorptionAmount();
 	}
 
+	@Override
 	public boolean sendCommandFeedback() {
 		return player.sendCommandFeedback();
 	}
 
+	@Override
 	public boolean replaceItemInInventory(int arg0, BukkitItemStack arg1) {
 		return player.replaceItemInInventory(arg0, arg1.getStack());
 	}
@@ -350,6 +378,7 @@ public class BukkitPlayer {
 		player.refreshDisplayName();
 	}
 
+	@Override
 	public BukkitItemStack getHeldItem() {
 		return new BukkitItemStack(player.getHeldItem());
 	}
@@ -358,14 +387,17 @@ public class BukkitPlayer {
 		return player.isSpectator();
 	}
 
+	@Override
 	public BukkitItemStack[] getInventory() {
 		return BukkitItemStack.getArray(player.getInventory());
 	}
 
+	@Override
 	public boolean isPushedByWater() {
 		return player.isPushedByWater();
 	}
 
+	@Override
 	public float getEyeHeight() {
 		return player.getEyeHeight();
 	}

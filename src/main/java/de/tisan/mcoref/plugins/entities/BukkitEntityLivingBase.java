@@ -1,12 +1,14 @@
 package de.tisan.mcoref.plugins.entities;
-
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
+import de.tisan.mcoref.plugins.item.BukkitItemStack;
 
-public class BukkitEntityLivingBase {
+public class BukkitEntityLivingBase extends BukkitEntity{
 	private EntityLivingBase living;
 
 	public BukkitEntityLivingBase(EntityLivingBase living) {
+		super((Entity) living);
 		this.living = living;
 	}
 
@@ -34,6 +36,7 @@ public class BukkitEntityLivingBase {
 		living.writeEntityToNBT(arg0);
 	}
 
+	@Override
 	public void onEntityUpdate() {
 		living.onEntityUpdate();
 	}
@@ -62,6 +65,7 @@ public class BukkitEntityLivingBase {
 		return living.getLastAttacker();
 	}
 
+	@Override
 	public void fall(float arg0, float arg1) {
 		living.fall(arg0, arg1);
 	}
@@ -74,6 +78,7 @@ public class BukkitEntityLivingBase {
 		living.setHealth(arg0);
 	}
 
+	@Override
 	public boolean isEntityAlive() {
 		return living.isEntityAlive();
 	}
@@ -126,10 +131,12 @@ public class BukkitEntityLivingBase {
 		living.removePotionEffectClient(arg0);
 	}
 
+	@Override
 	public void setCurrentItemOrArmor(int arg0, net.minecraft.item.ItemStack arg1) {
 		living.setCurrentItemOrArmor(arg0, arg1);
 	}
 
+	@Override
 	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
 	public boolean getAlwaysRenderNameTagForRender() {
 		return living.getAlwaysRenderNameTagForRender();
@@ -163,6 +170,7 @@ public class BukkitEntityLivingBase {
 		living.moveEntityWithHeading(arg0, arg1);
 	}
 
+	@Override
 	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
 	public void performHurtAnimation() {
 		living.performHurtAnimation();
@@ -184,6 +192,7 @@ public class BukkitEntityLivingBase {
 		return living.getCreatureAttribute();
 	}
 
+	@Override
 	public boolean canBeCollidedWith() {
 		return living.canBeCollidedWith();
 	}
@@ -192,6 +201,7 @@ public class BukkitEntityLivingBase {
 		living.clearActivePotions();
 	}
 
+	@Override
 	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
 	public void handleHealthUpdate(byte arg0) {
 		living.handleHealthUpdate(arg0);
@@ -205,14 +215,16 @@ public class BukkitEntityLivingBase {
 		return living.isPotionApplicable(arg0);
 	}
 
-	public net.minecraft.item.ItemStack getEquipmentInSlot(int arg0) {
-		return living.getEquipmentInSlot(arg0);
+	public BukkitItemStack getEquipmentInSlot(int arg0) {
+		return new BukkitItemStack(living.getEquipmentInSlot(arg0));
 	}
 
+	@Override
 	public void setRotationYawHead(float arg0) {
 		living.setRotationYawHead(arg0);
 	}
 
+	@Override
 	public float getRotationYawHead() {
 		return living.getRotationYawHead();
 	}
@@ -225,6 +237,7 @@ public class BukkitEntityLivingBase {
 		return living.getEntityAttribute(arg0);
 	}
 
+	@Override
 	public void onUpdate() {
 		living.onUpdate();
 	}
@@ -233,6 +246,7 @@ public class BukkitEntityLivingBase {
 		living.mountEntity(arg0);
 	}
 
+	@Override
 	public void updateRidden() {
 		living.updateRidden();
 	}
@@ -249,8 +263,8 @@ public class BukkitEntityLivingBase {
 		living.onLivingUpdate();
 	}
 
-	public net.minecraft.item.ItemStack getHeldItem() {
-		return living.getHeldItem();
+	public BukkitItemStack getHeldItem() {
+		return new BukkitItemStack(living.getHeldItem());
 	}
 
 	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
@@ -270,6 +284,7 @@ public class BukkitEntityLivingBase {
 		return living.getCombatTracker();
 	}
 
+	@Override
 	public void setSprinting(boolean arg0) {
 		living.setSprinting(arg0);
 	}
@@ -283,16 +298,17 @@ public class BukkitEntityLivingBase {
 	}
 
 	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
-	public net.minecraft.item.ItemStack getCurrentArmor(int arg0) {
-		return living.getCurrentArmor(arg0);
+	public BukkitItemStack getCurrentArmor(int arg0) {
+		return new BukkitItemStack(living.getCurrentArmor(arg0));
 	}
 
 	public net.minecraft.entity.ai.attributes.BaseAttributeMap getAttributeMap() {
 		return living.getAttributeMap();
 	}
 
-	public net.minecraft.item.ItemStack[] getInventory() {
-		return living.getInventory();
+	@Override
+	public BukkitItemStack[] getInventory() {
+		return BukkitItemStack.getArray(living.getInventory());
 	}
 
 	public void dismountEntity(net.minecraft.entity.Entity arg0) {
@@ -308,6 +324,7 @@ public class BukkitEntityLivingBase {
 		return living.getSwingProgress(arg0);
 	}
 
+	@Override
 	public boolean canBePushed() {
 		return living.canBePushed();
 	}

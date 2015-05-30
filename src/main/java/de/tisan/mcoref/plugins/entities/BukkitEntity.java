@@ -17,8 +17,8 @@ public class BukkitEntity {
 
 	private Entity entity;
 
-	public BukkitEntity(Entity entity) {
-		this.entity = entity;
+	public BukkitEntity(Entity item) {
+		entity = item;
 	}
 
 	public Entity getEntity() {
