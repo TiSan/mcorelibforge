@@ -20,7 +20,6 @@ public class TestPlugin extends BukkitJavaPlugin {
 
 	@Override
 	public void onDisable() {
-
 	}
 
 	@Override

@@ -76,10 +76,6 @@ public class BukkitPlayer {
 		player.dropPlayerItemWithRandomChoice(item.getStack(), true);
 	}
 
-	public void joinEntityItemWithWorld(net.minecraft.entity.item.EntityItem arg0) {
-		player.joinEntityItemWithWorld(arg0);
-	}
-
 	public void readEntityFromNBT(net.minecraft.nbt.NBTTagCompound arg0) {
 		player.readEntityFromNBT(arg0);
 	}
