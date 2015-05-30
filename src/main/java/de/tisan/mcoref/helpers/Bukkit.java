@@ -8,7 +8,6 @@ import java.util.Map;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -22,7 +21,7 @@ public class Bukkit {
 	private static BukkitCommandManager commandManager;
 
 	public static void sendMessage(BukkitPlayer player, String message) {
-		player.addChatComponentMessage(new ChatComponentText(message));
+		player.addChatComponentMessage(message);
 	}
 
 	public static void broadcastMessage(String message) {
