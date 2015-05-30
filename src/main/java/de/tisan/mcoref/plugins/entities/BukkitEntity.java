@@ -6,6 +6,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import de.tisan.mcoref.plugins.item.BukkitItemStack;
 import de.tisan.mcoref.plugins.location.BukkitAxisAlignedBB;
+import de.tisan.mcoref.plugins.location.Location;
 import de.tisan.mcoref.plugins.players.BukkitPlayer;
 import de.tisan.mcoref.plugins.worlds.BukkitWorld;
 
@@ -182,10 +183,6 @@ public class BukkitEntity {
 		return entity.isWet();
 	}
 
-	public void func_174830_Y() {
-		entity.func_174830_Y();
-	}
-
 	public void playSound(String arg0, float arg1, float arg2) {
 		entity.playSound(arg0, arg1, arg2);
 	}
@@ -198,12 +195,8 @@ public class BukkitEntity {
 		return entity.isInWater();
 	}
 
-	public void func_174810_b(boolean arg0) {
-		entity.func_174810_b(arg0);
-	}
-
-	public double getDistanceSq(net.minecraft.util.BlockPos arg0) {
-		return entity.getDistanceSq(arg0);
+	public double getDistanceSq(Location arg0) {
+		return entity.getDistanceSq(arg0.getBlockPos());
 	}
 
 	public double getDistanceSq(double arg0, double arg1, double arg2) {
@@ -212,10 +205,6 @@ public class BukkitEntity {
 
 	public void updateRiderPosition() {
 		entity.updateRiderPosition();
-	}
-
-	public boolean isInsideOfMaterial(net.minecraft.block.material.Material arg0) {
-		return entity.isInsideOfMaterial(arg0);
 	}
 
 	public void setLocationAndAngles(double arg0, double arg1, double arg2, float arg3, float arg4) {
@@ -240,20 +229,12 @@ public class BukkitEntity {
 		return entity.isInRangeToRenderDist(arg0);
 	}
 
-	public net.minecraft.entity.item.EntityItem dropItemWithOffset(net.minecraft.item.Item arg0, int arg1, float arg2) {
-		return entity.dropItemWithOffset(arg0, arg1, arg2);
+	public void onCollideWithPlayer(BukkitPlayer arg0) {
+		entity.onCollideWithPlayer(arg0.getPlayer());
 	}
 
-	public void onCollideWithPlayer(net.minecraft.entity.player.EntityPlayer arg0) {
-		entity.onCollideWithPlayer(arg0);
-	}
-
-	public void moveToBlockPosAndAngles(net.minecraft.util.BlockPos arg0, float arg1, float arg2) {
-		entity.moveToBlockPosAndAngles(arg0, arg1, arg2);
-	}
-
-	public boolean writeToNBTOptional(net.minecraft.nbt.NBTTagCompound arg0) {
-		return entity.writeToNBTOptional(arg0);
+	public void moveToBlockPosAndAngles(Location arg0, float arg1, float arg2) {
+		entity.moveToBlockPosAndAngles(arg0.getBlockPos(), arg1, arg2);
 	}
 
 	public float getDistanceToEntity(net.minecraft.entity.Entity arg0) {
@@ -268,10 +249,6 @@ public class BukkitEntity {
 		return entity.getPortalCooldown();
 	}
 
-	public void onStruckByLightning(net.minecraft.entity.effect.EntityLightningBolt arg0) {
-		entity.onStruckByLightning(arg0);
-	}
-
 	public void setRotationYawHead(float arg0) {
 		entity.setRotationYawHead(arg0);
 	}
@@ -279,14 +256,6 @@ public class BukkitEntity {
 	@SideOnly(Side.CLIENT)
 	public void performHurtAnimation() {
 		entity.performHurtAnimation();
-	}
-
-	public float getExplosionResistance(net.minecraft.world.Explosion arg0, net.minecraft.world.World arg1, net.minecraft.util.BlockPos arg2, net.minecraft.block.state.IBlockState arg3) {
-		return entity.getExplosionResistance(arg0, arg1, arg2, arg3);
-	}
-
-	public void addEntityCrashInfo(net.minecraft.crash.CrashReportCategory arg0) {
-		entity.addEntityCrashInfo(arg0);
 	}
 
 	public boolean getAlwaysRenderNameTag() {
@@ -297,16 +266,16 @@ public class BukkitEntity {
 		entity.setPositionAndUpdate(arg0, arg1, arg2);
 	}
 
-	public void copyLocationAndAnglesFrom(net.minecraft.entity.Entity arg0) {
-		entity.copyLocationAndAnglesFrom(arg0);
+	public void copyLocationAndAnglesFrom(BukkitEntity arg0) {
+		entity.copyLocationAndAnglesFrom(arg0.getEntity());
 	}
 
 	public boolean handleWaterMovement() {
 		return entity.handleWaterMovement();
 	}
 
-	public double getDistanceSqToEntity(net.minecraft.entity.Entity arg0) {
-		return entity.getDistanceSqToEntity(arg0);
+	public double getDistanceSqToEntity(BukkitEntity arg0) {
+		return entity.getDistanceSqToEntity(arg0.getEntity());
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -318,33 +287,33 @@ public class BukkitEntity {
 		entity.travelToDimension(arg0);
 	}
 
-	public net.minecraft.util.AxisAlignedBB getEntityBoundingBox() {
-		return entity.getEntityBoundingBox();
+	public BukkitAxisAlignedBB getEntityBoundingBox() {
+		return new BukkitAxisAlignedBB(entity.getEntityBoundingBox());
 	}
 
-	public void setEntityBoundingBox(net.minecraft.util.AxisAlignedBB arg0) {
-		entity.setEntityBoundingBox(arg0);
+	public void setEntityBoundingBox(BukkitAxisAlignedBB arg0) {
+		entity.setEntityBoundingBox(arg0.getAxisAlignedBB());
 	}
 
-	public boolean replaceItemInInventory(int arg0, net.minecraft.item.ItemStack arg1) {
-		return entity.replaceItemInInventory(arg0, arg1);
+	public boolean replaceItemInInventory(int arg0, BukkitItemStack arg1) {
+		return entity.replaceItemInInventory(arg0, arg1.getStack());
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean isInvisibleToPlayer(net.minecraft.entity.player.EntityPlayer arg0) {
-		return entity.isInvisibleToPlayer(arg0);
+	public boolean isInvisibleToPlayer(BukkitPlayer arg0) {
+		return entity.isInvisibleToPlayer(arg0.getPlayer());
 	}
 
 	public boolean canAttackWithItem() {
 		return entity.canAttackWithItem();
 	}
 
-	public void applyEntityCollision(net.minecraft.entity.Entity arg0) {
-		entity.applyEntityCollision(arg0);
+	public void applyEntityCollision(BukkitEntity arg0) {
+		entity.applyEntityCollision(arg0.getEntity());
 	}
 
-	public double getDistanceSqToCenter(net.minecraft.util.BlockPos arg0) {
-		return entity.getDistanceSqToCenter(arg0);
+	public double getDistanceSqToCenter(Location arg0) {
+		return entity.getDistanceSqToCenter(arg0.getBlockPos());
 	}
 
 	public void setAlwaysRenderNameTag(boolean arg0) {
