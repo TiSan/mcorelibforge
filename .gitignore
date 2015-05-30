@@ -28,3 +28,5 @@
 /eclipse/config/*
 /eclipse/plugins/
 /eclipse/plugins/*
+eclipse/plugins/TestPlugin.jar
+eclipse/plugins/TestPlugin.jar
