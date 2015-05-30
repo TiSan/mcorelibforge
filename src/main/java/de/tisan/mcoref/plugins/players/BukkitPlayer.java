@@ -1,15 +1,27 @@
 package de.tisan.mcoref.plugins.players;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IChatComponent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import de.tisan.mcoref.core.MCoreF;
+import de.tisan.mcoref.plugins.blocks.BukkitMaterial;
+import de.tisan.mcoref.plugins.blocks.BukkitMaterialType;
 import de.tisan.mcoref.plugins.item.BukkitItemStack;
+import de.tisan.mcoref.plugins.worlds.BukkitWorld;
+import de.tisan.mcoref.plugins.worlds.Location;
 
 public class BukkitPlayer {
 
 	private EntityPlayer player;
+
+	public EntityPlayer getPlayer() {
+		return player;
+	}
 
 	public BukkitPlayer(EntityPlayer pl) {
 		player = pl;
@@ -20,6 +32,11 @@ public class BukkitPlayer {
 		return player.getName();
 	}
 
+	/**
+	 * still in progress
+	 * 
+	 * @return
+	 */
 	public String getDisplayName() {
 		return player.getDisplayName().getUnformattedTextForChat();
 	}
@@ -76,10 +93,6 @@ public class BukkitPlayer {
 		player.dropPlayerItemWithRandomChoice(item.getStack(), true);
 	}
 
-	public void readEntityFromNBT(net.minecraft.nbt.NBTTagCompound arg0) {
-		player.readEntityFromNBT(arg0);
-	}
-
 	public int getTotalArmorValue() {
 		return player.getTotalArmorValue();
 	}
@@ -88,20 +101,12 @@ public class BukkitPlayer {
 		return player.getArmorVisibility();
 	}
 
-	public void displayVillagerTradeGui(net.minecraft.entity.IMerchant arg0) {
-		player.displayVillagerTradeGui(arg0);
-	}
-
 	public BukkitItemStack getCurrentEquippedItem() {
 		return new BukkitItemStack(player.getCurrentEquippedItem());
 	}
 
 	public void destroyCurrentEquippedItem() {
 		player.destroyCurrentEquippedItem();
-	}
-
-	public void onEnchantmentCritical(net.minecraft.entity.Entity arg0) {
-		player.onEnchantmentCritical(arg0);
 	}
 
 	public boolean isEntityInsideOpaqueBlock() {
@@ -117,16 +122,8 @@ public class BukkitPlayer {
 		return player.isPlayerFullyAsleep();
 	}
 
-	public void addChatComponentMessage(net.minecraft.util.IChatComponent arg0) {
-		player.addChatComponentMessage(arg0);
-	}
-
-	public void triggerAchievement(net.minecraft.stats.StatBase arg0) {
-		player.triggerAchievement(arg0);
-	}
-
-	public void moveEntityWithHeading(float arg0, float arg1) {
-		player.moveEntityWithHeading(arg0, arg1);
+	public void addChatComponentMessage(String message) {
+		player.addChatComponentMessage(new ChatComponentText(message));
 	}
 
 	public void closeScreen() {
@@ -153,111 +150,27 @@ public class BukkitPlayer {
 		player.addScore(arg0);
 	}
 
-	public void onDeath(net.minecraft.util.DamageSource arg0) {
-		player.onDeath(arg0);
+	public boolean canHarvestBlock(BukkitMaterial mat) {
+		if (mat.getMaterialType() == BukkitMaterialType.BLOCK) {
+			return player.canHarvestBlock(mat.getMinecraftBlock());
+		}
+		return false;
 	}
 
-	public void addToPlayerScore(net.minecraft.entity.Entity arg0, int arg1) {
-		player.addToPlayerScore(arg0, arg1);
-	}
-
-	public net.minecraft.entity.item.EntityItem dropOneItem(boolean arg0) {
-		return player.dropOneItem(arg0);
-	}
-
-	public net.minecraft.entity.item.EntityItem func_146097_a(net.minecraft.item.ItemStack arg0, boolean arg1, boolean arg2) {
-		return player.func_146097_a(arg0, arg1, arg2);
-	}
-
-	@java.lang.Deprecated
-	public float func_180471_a(net.minecraft.block.Block arg0) {
-		return player.func_180471_a(arg0);
-	}
-
-	public float getBreakSpeed(net.minecraft.block.state.IBlockState arg0, net.minecraft.util.BlockPos arg1) {
-		return player.getBreakSpeed(arg0, arg1);
-	}
-
-	public boolean canHarvestBlock(net.minecraft.block.Block arg0) {
-		return player.canHarvestBlock(arg0);
-	}
-
-	public void writeEntityToNBT(net.minecraft.nbt.NBTTagCompound arg0) {
-		player.writeEntityToNBT(arg0);
-	}
-
-	public boolean attackEntityFrom(net.minecraft.util.DamageSource arg0, float arg1) {
-		return player.attackEntityFrom(arg0, arg1);
-	}
-
-	public boolean canAttackPlayer(net.minecraft.entity.player.EntityPlayer arg0) {
-		return player.canAttackPlayer(arg0);
-	}
-
-	public void func_175141_a(net.minecraft.tileentity.TileEntitySign arg0) {
-		player.func_175141_a(arg0);
-	}
-
-	public void func_146095_a(net.minecraft.command.server.CommandBlockLogic arg0) {
-		player.func_146095_a(arg0);
-	}
-
-	public void displayGUIChest(net.minecraft.inventory.IInventory arg0) {
-		player.displayGUIChest(arg0);
-	}
-
-	public void displayGUIHorse(net.minecraft.entity.passive.EntityHorse arg0, net.minecraft.inventory.IInventory arg1) {
-		player.displayGUIHorse(arg0, arg1);
-	}
-
-	public void displayGui(net.minecraft.world.IInteractionObject arg0) {
-		player.displayGui(arg0);
-	}
-
-	public void displayGUIBook(net.minecraft.item.ItemStack arg0) {
-		player.displayGUIBook(arg0);
-	}
-
-	public boolean interactWith(net.minecraft.entity.Entity arg0) {
-		return player.interactWith(arg0);
+	public boolean canAttackPlayer(BukkitPlayer arg0) {
+		return player.canAttackPlayer(arg0.getPlayer());
 	}
 
 	public double getYOffset() {
 		return player.getYOffset();
 	}
 
-	public void onCriticalHit(net.minecraft.entity.Entity arg0) {
-		player.onCriticalHit(arg0);
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void respawnPlayer() {
-		player.respawnPlayer();
-	}
-
 	public void setDead() {
 		player.setDead();
 	}
 
-	@SideOnly(Side.CLIENT)
-	public boolean func_175144_cb() {
-		return player.func_175144_cb();
-	}
-
-	public com.mojang.authlib.GameProfile getGameProfile() {
-		return player.getGameProfile();
-	}
-
-	public net.minecraft.entity.player.EntityPlayer.EnumStatus func_180469_a(net.minecraft.util.BlockPos arg0) {
-		return player.func_180469_a(arg0);
-	}
-
 	public void wakeUpPlayer(boolean arg0, boolean arg1, boolean arg2) {
 		player.wakeUpPlayer(arg0, arg1, arg2);
-	}
-
-	public static net.minecraft.util.BlockPos func_180467_a(net.minecraft.world.World arg0, net.minecraft.util.BlockPos arg1, boolean arg2) {
-		return EntityPlayer.func_180467_a(arg0, arg1, arg2);
 	}
 
 	public boolean isPlayerSleeping() {
@@ -269,33 +182,20 @@ public class BukkitPlayer {
 		return player.getSleepTimer();
 	}
 
-	public net.minecraft.util.BlockPos getBedLocation() {
-		return player.getBedLocation();
+	public Location getBedLocation() {
+		return new Location(player.getBedLocation());
 	}
 
-	public net.minecraft.util.BlockPos getBedLocation(int arg0) {
-		return player.getBedLocation(arg0);
-	}
-
-	@java.lang.Deprecated
-	public boolean isSpawnForced() {
-		return player.isSpawnForced();
+	public Location getBedLocation(int arg0) {
+		return new Location(player.getBedLocation(arg0));
 	}
 
 	public boolean isSpawnForced(int arg0) {
 		return player.isSpawnForced(arg0);
 	}
 
-	public void setSpawnPoint(net.minecraft.util.BlockPos arg0, boolean arg1) {
-		player.setSpawnPoint(arg0, arg1);
-	}
-
-	public void addStat(net.minecraft.stats.StatBase arg0, int arg1) {
-		player.addStat(arg0, arg1);
-	}
-
-	public void func_175145_a(net.minecraft.stats.StatBase arg0) {
-		player.func_175145_a(arg0);
+	public void setSpawnPoint(Location arg0, boolean arg1) {
+		player.setSpawnPoint(arg0.getBlockPos(), arg1);
 	}
 
 	public void jump() {
@@ -314,16 +214,12 @@ public class BukkitPlayer {
 		player.fall(arg0, arg1);
 	}
 
-	public void onKillEntity(net.minecraft.entity.EntityLivingBase arg0) {
-		player.onKillEntity(arg0);
-	}
-
 	public void setInWeb() {
 		player.setInWeb();
 	}
 
-	public net.minecraft.item.ItemStack getCurrentArmor(int arg0) {
-		return player.getCurrentArmor(arg0);
+	public BukkitItemStack getCurrentArmor(int arg0) {
+		return new BukkitItemStack(player.getCurrentArmor(arg0));
 	}
 
 	public void addExperience(int arg0) {
@@ -342,8 +238,24 @@ public class BukkitPlayer {
 		player.addExhaustion(arg0);
 	}
 
-	public net.minecraft.util.FoodStats getFoodStats() {
-		return player.getFoodStats();
+	public void setFoodLevel(int lvl) {
+		player.getFoodStats().setFoodLevel(lvl);
+	}
+
+	public void setFoodSaturationLevel(float lvl) {
+		player.getFoodStats().setFoodSaturationLevel(lvl);
+	}
+
+	public int getFoodLevel() {
+		return player.getFoodStats().getFoodLevel();
+	}
+
+	public float getFoodSaturationLevel() {
+		return player.getFoodStats().getSaturationLevel();
+	}
+
+	public boolean needFood() {
+		return player.getFoodStats().needFood();
 	}
 
 	public boolean canEat(boolean arg0) {
@@ -354,24 +266,8 @@ public class BukkitPlayer {
 		return player.shouldHeal();
 	}
 
-	public void setItemInUse(net.minecraft.item.ItemStack arg0, int arg1) {
-		player.setItemInUse(arg0, arg1);
-	}
-
-	public boolean func_175142_cm() {
-		return player.func_175142_cm();
-	}
-
-	public boolean func_175151_a(net.minecraft.util.BlockPos arg0, net.minecraft.util.EnumFacing arg1, net.minecraft.item.ItemStack arg2) {
-		return player.func_175151_a(arg0, arg1, arg2);
-	}
-
-	public void clonePlayer(net.minecraft.entity.player.EntityPlayer arg0, boolean arg1) {
-		player.clonePlayer(arg0, arg1);
-	}
-
-	public void setGameType(net.minecraft.world.WorldSettings.GameType arg0) {
-		player.setGameType(arg0);
+	public void setItemInUse(BukkitItemStack arg0, int arg1) {
+		player.setItemInUse(arg0.getStack(), arg1);
 	}
 
 	public void removeExperienceLevel(int arg0) {
@@ -391,25 +287,26 @@ public class BukkitPlayer {
 		player.sendPlayerAbilities();
 	}
 
+	/**
+	 * Comming soon..
+	 * 
+	 * @return
+	 */
 	public net.minecraft.inventory.InventoryEnderChest getInventoryEnderChest() {
 		return player.getInventoryEnderChest();
 	}
 
-	public net.minecraft.item.ItemStack getEquipmentInSlot(int arg0) {
-		return player.getEquipmentInSlot(arg0);
+	public BukkitItemStack getEquipmentInSlot(int arg0) {
+		return new BukkitItemStack(player.getEquipmentInSlot(arg0));
 	}
 
-	public void setCurrentItemOrArmor(int arg0, net.minecraft.item.ItemStack arg1) {
-		player.setCurrentItemOrArmor(arg0, arg1);
+	public void setCurrentItemOrArmor(int arg0, BukkitItemStack arg1) {
+		player.setCurrentItemOrArmor(arg0, arg1.getStack());
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean isInvisibleToPlayer(net.minecraft.entity.player.EntityPlayer arg0) {
-		return player.isInvisibleToPlayer(arg0);
-	}
-
-	public net.minecraft.scoreboard.Scoreboard getWorldScoreboard() {
-		return player.getWorldScoreboard();
+	public boolean isInvisibleToPlayer(BukkitPlayer arg0) {
+		return player.isInvisibleToPlayer(arg0.getPlayer());
 	}
 
 	public void setAbsorptionAmount(float arg0) {
@@ -424,15 +321,15 @@ public class BukkitPlayer {
 		return player.sendCommandFeedback();
 	}
 
-	public boolean replaceItemInInventory(int arg0, net.minecraft.item.ItemStack arg1) {
-		return player.replaceItemInInventory(arg0, arg1);
+	public boolean replaceItemInInventory(int arg0, BukkitItemStack arg1) {
+		return player.replaceItemInInventory(arg0, arg1.getStack());
 	}
 
 	public float getDefaultEyeHeight() {
 		return player.getDefaultEyeHeight();
 	}
 
-	public java.lang.String getDisplayNameString() {
+	public String getDisplayNameString() {
 		return player.getDisplayNameString();
 	}
 
@@ -440,45 +337,32 @@ public class BukkitPlayer {
 		player.refreshDisplayName();
 	}
 
-	public net.minecraft.item.ItemStack getHeldItem() {
-		return player.getHeldItem();
+	public BukkitItemStack getHeldItem() {
+		return new BukkitItemStack(player.getHeldItem());
 	}
 
 	public boolean isSpectator() {
 		return player.isSpectator();
 	}
 
-	public net.minecraft.item.ItemStack[] getInventory() {
-		return player.getInventory();
+	public BukkitItemStack[] getInventory() {
+		return BukkitItemStack.getArray(player.getInventory());
 	}
 
 	public boolean isPushedByWater() {
 		return player.isPushedByWater();
 	}
 
-	public net.minecraft.scoreboard.Team getTeam() {
-		return player.getTeam();
-	}
-
 	public float getEyeHeight() {
 		return player.getEyeHeight();
 	}
 
-	public static java.util.UUID getUUID(com.mojang.authlib.GameProfile arg0) {
-		return EntityPlayer.getUUID(arg0);
+	public UUID getUUID() {
+		return player.getGameProfile().getId();
 	}
 
 	public static UUID getOfflineUUID(String arg0) {
 		return EntityPlayer.getOfflineUUID(arg0);
-	}
-
-	public boolean canOpen(net.minecraft.world.LockCode arg0) {
-		return player.canOpen(arg0);
-	}
-
-	@SideOnly(Side.CLIENT)
-	public boolean func_175148_a(net.minecraft.entity.player.EnumPlayerModelParts arg0) {
-		return player.func_175148_a(arg0);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -486,28 +370,40 @@ public class BukkitPlayer {
 		player.setReducedDebug(arg0);
 	}
 
-	public void openGui(java.lang.Object arg0, int arg1, net.minecraft.world.World arg2, int arg3, int arg4, int arg5) {
-		player.openGui(arg0, arg1, arg2, arg3, arg4, arg5);
+	public void openGui(int guiID, BukkitWorld world, int x, int y, int z) {
+		player.openGui(MCoreF.instance, guiID, world.getWorld(), x, y, z);
 	}
 
-	public void setSpawnChunk(net.minecraft.util.BlockPos arg0, boolean arg1, int arg2) {
-		player.setSpawnChunk(arg0, arg1, arg2);
+	public void setSpawnChunk(Location arg0, boolean arg1, int arg2) {
+		player.setSpawnChunk(arg0.getBlockPos(), arg1, arg2);
 	}
 
-	public void addPrefix(net.minecraft.util.IChatComponent arg0) {
-		player.addPrefix(arg0);
+	public void addPrefix(String arg0) {
+		player.addPrefix(new ChatComponentText(arg0));
 	}
 
-	public void addSuffix(net.minecraft.util.IChatComponent arg0) {
-		player.addSuffix(arg0);
+	public void addSuffix(String arg0) {
+		player.addSuffix(new ChatComponentText(arg0));
 	}
 
-	public java.util.Collection getPrefixes() {
-		return player.getPrefixes();
+	public ArrayList<String> getPrefixes() {
+		ArrayList<String> str = new ArrayList<String>();
+		for (IChatComponent obj : player.getPrefixes()) {
+			if (obj instanceof ChatComponentText) {
+				str.add(((ChatComponentText) obj).getChatComponentText_TextValue());
+			}
+		}
+		return str;
 	}
 
-	public java.util.Collection getSuffixes() {
-		return player.getSuffixes();
+	public ArrayList<String> getSuffixes() {
+		ArrayList<String> str = new ArrayList<String>();
+		for (IChatComponent obj : player.getSuffixes()) {
+			if (obj instanceof ChatComponentText) {
+				str.add(((ChatComponentText) obj).getChatComponentText_TextValue());
+			}
+		}
+		return str;
 	}
 
 }

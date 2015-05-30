@@ -96,4 +96,12 @@ public class BukkitItemStack {
 	public BukkitItemStack splitStack(int amount) {
 		return new BukkitItemStack(item.splitStack(amount));
 	}
+
+	public static BukkitItemStack[] getArray(ItemStack[] inventory) {
+		BukkitItemStack[] stacks = new BukkitItemStack[inventory.length];
+		for (int i = 0; i < inventory.length; i++) {
+			stacks[i] = new BukkitItemStack(inventory[i]);
+		}
+		return stacks;
+	}
 }

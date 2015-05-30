@@ -252,7 +252,8 @@ public class BukkitWorld {
 		world.removePlayerEntityDangerously(arg0);
 	}
 
-	public void markAndNotifyBlock(net.minecraft.util.BlockPos arg0, net.minecraft.world.chunk.Chunk arg1, net.minecraft.block.state.IBlockState arg2, net.minecraft.block.state.IBlockState arg3, int arg4) {
+	public void markAndNotifyBlock(net.minecraft.util.BlockPos arg0, net.minecraft.world.chunk.Chunk arg1, net.minecraft.block.state.IBlockState arg2, net.minecraft.block.state.IBlockState arg3,
+			int arg4) {
 		world.markAndNotifyBlock(arg0, arg1, arg2, arg3, arg4);
 	}
 
@@ -832,7 +833,8 @@ public class BukkitWorld {
 		world.setSpawnLocation(arg0);
 	}
 
-	public boolean canBlockBePlaced(net.minecraft.block.Block arg0, net.minecraft.util.BlockPos arg1, boolean arg2, net.minecraft.util.EnumFacing arg3, net.minecraft.entity.Entity arg4, net.minecraft.item.ItemStack arg5) {
+	public boolean canBlockBePlaced(net.minecraft.block.Block arg0, net.minecraft.util.BlockPos arg1, boolean arg2, net.minecraft.util.EnumFacing arg3, net.minecraft.entity.Entity arg4,
+			net.minecraft.item.ItemStack arg5) {
 		return world.canBlockBePlaced(arg0, arg1, arg2, arg3, arg4, arg5);
 	}
 
@@ -920,6 +922,10 @@ public class BukkitWorld {
 
 	public net.minecraft.world.DifficultyInstance getDifficultyForLocation(net.minecraft.util.BlockPos arg0) {
 		return world.getDifficultyForLocation(arg0);
+	}
+
+	public World getWorld() {
+		return world;
 	}
 
 }

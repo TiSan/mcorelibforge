@@ -11,6 +11,10 @@ public class BukkitEntity {
 		this.entity = entity;
 	}
 
+	public Entity getEntity() {
+		return entity;
+	}
+
 	@Override
 	public boolean equals(java.lang.Object arg0) {
 		return entity.equals(arg0);
