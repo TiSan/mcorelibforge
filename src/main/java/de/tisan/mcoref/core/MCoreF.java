@@ -21,7 +21,7 @@ import de.tisan.mcoref.proxies.MCoreFProxy;
 public class MCoreF {
 	@Instance(value = MCoreFProperty.MODID)
 	public static MCoreF instance;
-	public static boolean DEBUG_MODE = false;
+	public static boolean DEBUG_MODE = true;
 	@net.minecraftforge.fml.common.SidedProxy(clientSide = MCoreFProperty.CLIENTPROXY, serverSide = MCoreFProperty.SERVERPROXY)
 	public static MCoreFProxy proxy;
 

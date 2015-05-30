@@ -79,6 +79,7 @@ public class MCoreFEvents implements BukkitListener {
 
 	@SubscribeEvent
 	public void onEntityConstructEvent(EntityConstructing ev) {
+		System.out.println("Firing vanilla event " + ev.entity.getEntityId());
 		Bukkit.getEventManager().callEvent(new EntityConstructEvent(new BukkitEntity(ev.entity)));
 	}
 

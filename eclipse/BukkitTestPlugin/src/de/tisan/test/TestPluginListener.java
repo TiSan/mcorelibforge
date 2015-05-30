@@ -4,9 +4,7 @@ import de.tisan.mcoref.events.core.BukkitEventHandler;
 import de.tisan.mcoref.events.properties.BukkitBlockInteractByPlayerEvent;
 import de.tisan.mcoref.events.properties.BukkitListener;
 import de.tisan.mcoref.events.properties.EntityConstructEvent;
-import de.tisan.mcoref.events.properties.LivingJumpEvent;
 import de.tisan.mcoref.plugins.entities.BukkitEntity;
-import de.tisan.mcoref.plugins.players.BukkitPlayer;
 
 public class TestPluginListener implements BukkitListener {
 
@@ -19,12 +17,6 @@ public class TestPluginListener implements BukkitListener {
 	public void onEntityContruct(EntityConstructEvent event) {
 		BukkitEntity ent = event.getEntity();
 		ent.registerExtendedProperties("Test", new ManaProp());
-	}
-
-	@BukkitEventHandler
-	public void onJump(LivingJumpEvent event) {
-		BukkitPlayer ent = (BukkitPlayer) event.getLiving();
-		ManaProp mana = (ManaProp) ent.getExtendedProperties("Test");
-		System.out.println("Mana = " + mana.mana);
+		System.out.println("Hi Construct");
 	}
 }

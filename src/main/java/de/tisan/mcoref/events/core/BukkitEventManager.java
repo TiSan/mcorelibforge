@@ -19,8 +19,11 @@ public class BukkitEventManager {
 		if (obj != null) {
 			for (Method m : obj.getClass().getDeclaredMethods()) {
 				if (m.isAnnotationPresent(BukkitEventHandler.class)) {
+					System.out.println("Annotation is pResent");
 					if ((m.getParameterTypes() != null) && (m.getParameterTypes().length > 0)) {
+						System.out.println("Has parameter");
 						if (hasType(m.getParameterTypes()[0], BukkitEvent.class)) {
+							System.out.println("Register event");
 							methods.add(new LiWiMeCom(obj, m));
 						}
 					}
@@ -41,6 +44,7 @@ public class BukkitEventManager {
 		boolean cancel = false;
 		if (attr != null) {
 			for (LiWiMeCom m : getMethodsByClass(attr.getClass())) {
+				System.out.println("Invoke");
 				try {
 					m.getMethod().invoke(m.getListener(), attr);
 					cancel = attr.isCancelled();
@@ -61,9 +65,14 @@ public class BukkitEventManager {
 	private ArrayList<LiWiMeCom> getMethodsByClass(Class cla) {
 		ArrayList<LiWiMeCom> com = new ArrayList<LiWiMeCom>();
 		for (LiWiMeCom m : methods) {
+			System.out.println("is " + m.getMethod().getParameterTypes()[0].getName() + " == " + cla.getName());
 			if (isType(m.getMethod().getParameterTypes()[0], cla)) {
+				System.out.println("Yes it is.");
 				com.add(m);
+			} else {
+				System.out.println("No it is not.");
 			}
+			
 		}
 		return com;
 	}
