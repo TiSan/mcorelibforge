@@ -89,58 +89,107 @@ public class MCoreFEvents implements BukkitListener {
 
 	@SubscribeEvent
 	public void onEntityJoinWorldEvent(EntityJoinWorldEvent ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityJoinWorldEvent(new BukkitEntity(ev.entity), new BukkitWorld(ev.world))));
+		if (ev.isCancelable()) {
+			ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityJoinWorldEvent(new BukkitEntity(ev.entity), new BukkitWorld(ev.world))));
+		} else {
+			Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityJoinWorldEvent(new BukkitEntity(ev.entity), new BukkitWorld(ev.world)));
+		}
 	}
 
 	@SubscribeEvent
 	public void onEntityStruckByLightningEffect(net.minecraftforge.event.entity.EntityStruckByLightningEvent ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(new EntityStruckByLightningEvent(new BukkitEntity(ev.entity), new BukkitEntityLightningBolt(ev.lightning))));
+		if (ev.isCancelable()) {
+			ev.setCanceled(Bukkit.getEventManager().callEvent(new EntityStruckByLightningEvent(new BukkitEntity(ev.entity), new BukkitEntityLightningBolt(ev.lightning))));
+		} else {
+			Bukkit.getEventManager().callEvent(new EntityStruckByLightningEvent(new BukkitEntity(ev.entity), new BukkitEntityLightningBolt(ev.lightning)));
+		}
+
 	}
 
 	@SubscribeEvent
 	public void onEntityPlaySoundEffect(PlaySoundAtEntityEvent ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(new EntityPlaySoundEffect(new BukkitEntity(ev.entity), ev.name, ev.volume, ev.pitch, ev.newVolume, ev.newPitch)));
+		if (ev.isCancelable()) {
+			ev.setCanceled(Bukkit.getEventManager().callEvent(new EntityPlaySoundEffect(new BukkitEntity(ev.entity), ev.name, ev.volume, ev.pitch, ev.newVolume, ev.newPitch)));
+		} else {
+			Bukkit.getEventManager().callEvent(new EntityPlaySoundEffect(new BukkitEntity(ev.entity), ev.name, ev.volume, ev.pitch, ev.newVolume, ev.newPitch));
+		}
+
 	}
 
 	@SubscribeEvent
 	public void onItemExpireEvent(ItemExpireEvent ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.ItemExpireEvent(new BukkitEntityItem(ev.entityItem), ev.extraLife)));
+		if (ev.isCancelable()) {
+			ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.ItemExpireEvent(new BukkitEntityItem(ev.entityItem), ev.extraLife)));
+		} else {
+			Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.ItemExpireEvent(new BukkitEntityItem(ev.entityItem), ev.extraLife));
+		}
+
 	}
 
 	@SubscribeEvent
 	public void onItemTossEvent(ItemTossEvent ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.ItemTossEvent(new BukkitEntityItem(ev.entityItem), new BukkitPlayer(ev.player))));
+		if (ev.isCancelable()) {
+			ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.ItemTossEvent(new BukkitEntityItem(ev.entityItem), new BukkitPlayer(ev.player))));
+		} else {
+			Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.ItemTossEvent(new BukkitEntityItem(ev.entityItem), new BukkitPlayer(ev.player)));
+		}
+
 	}
 
 	@SubscribeEvent
 	public void onLivingJumpEvent(LivingJumpEvent ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.LivingJumpEvent(new BukkitEntityLivingBase(ev.entityLiving))));
+		Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.LivingJumpEvent(new BukkitEntityLivingBase(ev.entityLiving)));
 	}
 
 	@SubscribeEvent
 	public void onLivingUpdateEvent(LivingUpdateEvent ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.LivingUpdateEvent(new BukkitEntityLivingBase(ev.entityLiving))));
+		if (ev.isCancelable()) {
+			ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.LivingUpdateEvent(new BukkitEntityLivingBase(ev.entityLiving))));
+		} else {
+			Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.LivingUpdateEvent(new BukkitEntityLivingBase(ev.entityLiving)));
+		}
+
 	}
 
 	@SubscribeEvent
 	public void onEnderTeleportEvent(EnderTeleportEvent ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EnderTeleportEvent(new BukkitEntityLivingBase(ev.entityLiving), ev.targetX, ev.targetY, ev.targetZ, ev.attackDamage)));
+		if (ev.isCancelable()) {
+			ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EnderTeleportEvent(new BukkitEntityLivingBase(ev.entityLiving), ev.targetX, ev.targetY, ev.targetZ, ev.attackDamage)));
+		} else {
+			Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EnderTeleportEvent(new BukkitEntityLivingBase(ev.entityLiving), ev.targetX, ev.targetY, ev.targetZ, ev.attackDamage));
+		}
+
 	}
 
 	@SubscribeEvent
 	public void onEntityAttackEvent(LivingAttackEvent ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityAttackEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source), ev.ammount)));
+		if (ev.isCancelable()) {
+			ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityAttackEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source), ev.ammount)));
+		} else {
+			Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityAttackEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source), ev.ammount));
+		}
+
 	}
 
 	@SubscribeEvent
 	public void onEntityDeathEvent(LivingDeathEvent ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityDeathEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source))));
+		if (ev.isCancelable()) {
+			ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityDeathEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source))));
+		} else {
+			Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityDeathEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source)));
+		}
+
 	}
 
 	@SubscribeEvent
 	public void onEntityDeathDropItemEvent(LivingDropsEvent ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(
-				new de.tisan.mcoref.events.properties.EntityDeathDropItemEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source), ev.drops, ev.lootingLevel, ev.recentlyHit)));
+		if (ev.isCancelable()) {
+			ev.setCanceled(Bukkit.getEventManager().callEvent(
+					new de.tisan.mcoref.events.properties.EntityDeathDropItemEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source), ev.drops, ev.lootingLevel, ev.recentlyHit)));
+		} else {
+			Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityDeathDropItemEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source), ev.drops, ev.lootingLevel, ev.recentlyHit));
+		}
+
 	}
 
 }
