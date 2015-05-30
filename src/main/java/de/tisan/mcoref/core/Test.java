@@ -6,8 +6,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.nbt.NBTException;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import de.tisan.mcoref.events.properties.BukkitListener;
 
@@ -21,7 +21,7 @@ public class Test implements BukkitListener {
 		// }
 		//
 
-		for (Method m : World.class.getDeclaredMethods()) {
+		for (Method m : EntityItem.class.getDeclaredMethods()) {
 			if (Modifier.toString(m.getModifiers()).startsWith("public")) {
 				String methodName = m.getName();
 
@@ -46,7 +46,7 @@ public class Test implements BukkitListener {
 					}
 				}
 				System.out.println("){");
-				System.out.println((returning ? "return " : "") + (Modifier.toString(m.getModifiers()).contains("static") ? "World." : "world.") + methodName + "(" + params + ");\n}\n\n");
+				System.out.println((returning ? "return " : "") + (Modifier.toString(m.getModifiers()).contains("static") ? "EntityItem." : "item.") + methodName + "(" + params + ");\n}\n\n");
 			}
 		}
 

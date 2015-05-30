@@ -10,6 +10,8 @@ import net.minecraftforge.event.entity.EntityEvent.EnteringChunk;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
+import net.minecraftforge.event.entity.item.ItemExpireEvent;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import de.tisan.mcoref.events.core.BukkitEventHandler;
@@ -24,7 +26,9 @@ import de.tisan.mcoref.helpers.Bukkit;
 import de.tisan.mcoref.plugins.commands.Command;
 import de.tisan.mcoref.plugins.commands.CommandSender;
 import de.tisan.mcoref.plugins.entities.BukkitEntity;
+import de.tisan.mcoref.plugins.entities.BukkitEntityItem;
 import de.tisan.mcoref.plugins.entities.effect.BukkitEntityLightningBolt;
+import de.tisan.mcoref.plugins.players.BukkitPlayer;
 import de.tisan.mcoref.plugins.worlds.BukkitWorld;
 
 public class MCoreFEvents implements BukkitListener {
@@ -89,4 +93,15 @@ public class MCoreFEvents implements BukkitListener {
 	public void onEntityPlaySoundEffect(PlaySoundAtEntityEvent ev) {
 		ev.setCanceled(Bukkit.getEventManager().callEvent(new EntityPlaySoundEffect(new BukkitEntity(ev.entity), ev.name, ev.volume, ev.pitch, ev.newVolume, ev.newPitch)));
 	}
+
+	@SubscribeEvent
+	public void onItemExpireEvent(ItemExpireEvent ev) {
+		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.ItemExpireEvent(new BukkitEntityItem(ev.entityItem), ev.extraLife)));
+	}
+
+	@SubscribeEvent
+	public void onItemTossEvent(ItemTossEvent ev) {
+		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.ItemTossEvent(new BukkitEntityItem(ev.entityItem), new BukkitPlayer(ev.player))));
+	}
+
 }
