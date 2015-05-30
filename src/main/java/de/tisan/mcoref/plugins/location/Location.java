@@ -1,4 +1,4 @@
-package de.tisan.mcoref.plugins.worlds;
+package de.tisan.mcoref.plugins.location;
 
 import java.util.Iterator;
 

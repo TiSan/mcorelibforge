@@ -7,14 +7,14 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 
 import net.minecraft.nbt.NBTException;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import de.tisan.mcoref.events.properties.BukkitListener;
 
 public class mcNETTest implements BukkitListener {
 
 	public static void main(String[] args) throws InterruptedException, IOException, NBTException {
-		for (Method m : NBTTagList.class.getDeclaredMethods()) {
+		for (Method m : AxisAlignedBB.class.getDeclaredMethods()) {
 			if (Modifier.toString(m.getModifiers()).startsWith("public")) {
 				String methodName = m.getName();
 
@@ -39,7 +39,7 @@ public class mcNETTest implements BukkitListener {
 					}
 				}
 				System.out.println("){");
-				System.out.println((returning ? "return " : "") + (Modifier.toString(m.getModifiers()).contains("static") ? "NBTTagList." : "list.") + methodName + "(" + params + ");\n}\n\n");
+				System.out.println((returning ? "return " : "") + (Modifier.toString(m.getModifiers()).contains("static") ? "AxisAlignedBB." : "aabb.") + methodName + "(" + params + ");\n}\n\n");
 			}
 		}
 

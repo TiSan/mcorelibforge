@@ -12,8 +12,8 @@ import de.tisan.mcoref.core.MCoreF;
 import de.tisan.mcoref.plugins.blocks.BukkitMaterial;
 import de.tisan.mcoref.plugins.blocks.BukkitMaterialType;
 import de.tisan.mcoref.plugins.item.BukkitItemStack;
+import de.tisan.mcoref.plugins.location.Location;
 import de.tisan.mcoref.plugins.worlds.BukkitWorld;
-import de.tisan.mcoref.plugins.worlds.Location;
 
 public class BukkitPlayer {
 
