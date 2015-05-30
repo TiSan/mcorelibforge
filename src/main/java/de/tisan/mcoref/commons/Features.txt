@@ -17,7 +17,7 @@
     - EntityPlaySoundEvent (fertig)
     - ItemDisappearEvent (ItemExpireEvent) (fertig)
     - ItemDropEvent (ItemTossEvent) (fertig)
-    - EnderTeleportEvent
+    - EnderTeleportEvent (fertig)
     - EntityAttackedEvent (LivingAttackEvent)
     - EntityDeathEvent (LivingDeathEvent)
     - EntityDropItemEvent (LivingDropEvent) //onDeath
@@ -110,3 +110,4 @@
    - net.minecraft.world.LockCode
    - net.minecraft.entity.player.EnumPlayerModelParts
    - net.minecraft.util.IChatComponent
+ - Bei Events auch Variablen ändern können und diese in die Forge Events eintragen!

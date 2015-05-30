@@ -6,8 +6,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTException;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import de.tisan.mcoref.events.properties.BukkitListener;
 
@@ -21,7 +21,7 @@ public class Test implements BukkitListener {
 		// }
 		//
 
-		Test.printMethods(EntityLivingBase.class, "living");
+		Test.printMethods(DamageSource.class, "source");
 
 	}
 	
