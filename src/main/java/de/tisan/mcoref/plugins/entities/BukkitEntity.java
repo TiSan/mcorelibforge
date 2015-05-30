@@ -369,15 +369,17 @@ public class BukkitEntity {
 		return entity.shouldRenderInPass(arg0);
 	}
 
-	// public String registerExtendedProperties(String arg0,
-	// net.minecraftforge.common.IExtendedEntityProperties arg1) {
-	// return entity.registerExtendedProperties(arg0, arg1);
-	// }
-	//
-	// public net.minecraftforge.common.IExtendedEntityProperties
-	// getExtendedProperties(String arg0) {
-	// return entity.getExtendedProperties(arg0);
-	// }
+	public String registerExtendedProperties(String name, BExtendedProperties prop) {
+		return entity.registerExtendedProperties(name, prop);
+	}
+
+	public BExtendedProperties getExtendedProperties(String name) {
+		if (entity.getExtendedProperties(name) instanceof BExtendedProperties) {
+			BExtendedProperties prop = (BExtendedProperties) entity.getExtendedProperties(name);
+			return prop;
+		}
+		return null;
+	}
 
 	public boolean shouldDismountInWater(BukkitEntity arg0) {
 		return entity.shouldDismountInWater(arg0.getEntity());

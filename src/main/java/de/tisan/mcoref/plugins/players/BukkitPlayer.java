@@ -11,6 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import de.tisan.mcoref.core.MCoreF;
 import de.tisan.mcoref.plugins.blocks.BukkitMaterial;
 import de.tisan.mcoref.plugins.blocks.BukkitMaterialType;
+import de.tisan.mcoref.plugins.entities.BExtendedProperties;
 import de.tisan.mcoref.plugins.item.BukkitItemStack;
 import de.tisan.mcoref.plugins.location.Location;
 import de.tisan.mcoref.plugins.worlds.BukkitWorld;
@@ -44,6 +45,18 @@ public class BukkitPlayer {
 	@SideOnly(Side.CLIENT)
 	public int getItemInUseCount() {
 		return player.getItemInUseCount();
+	}
+
+	public String registerExtendedProperties(String name, BExtendedProperties prop) {
+		return player.registerExtendedProperties(name, prop);
+	}
+
+	public BExtendedProperties getExtendedProperties(String name) {
+		if (player.getExtendedProperties(name) instanceof BExtendedProperties) {
+			BExtendedProperties prop = (BExtendedProperties) player.getExtendedProperties(name);
+			return prop;
+		}
+		return null;
 	}
 
 	@SideOnly(Side.CLIENT)
