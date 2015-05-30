@@ -17,6 +17,10 @@
 /eclipse/options.txt
 /eclipse/banned-ips.json
 /eclipse/banned-players.json
+/eclipse/config/
+/eclipse/config/*
+/eclipse/plugins/
+/eclipse/plugins/*
 !/build.gradle
 !/build.properties
 !/build.properties
@@ -24,9 +28,4 @@
 !/libs/
 !/libs/*
 !/.gitignore
-/eclipse/config/
-/eclipse/config/*
-/eclipse/plugins/
-/eclipse/plugins/*
-eclipse/plugins/TestPlugin.jar
-eclipse/plugins/TestPlugin.jar
+
