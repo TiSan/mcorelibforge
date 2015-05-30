@@ -15,8 +15,8 @@
     - EntityJoinWorldEvent (fertig)
     - EntityStruckByLightningEvent (fertig)
     - EntityPlaySoundEvent (fertig)
-    - ItemDisappearEvent (ItemExpireEvent)
-    - ItemDropEvent (ItemTossEvent)
+    - ItemDisappearEvent (ItemExpireEvent) (fertig)
+    - ItemDropEvent (ItemTossEvent) (fertig)
     - EnderTeleportEvent
     - EntityAttackedEvent (LivingAttackEvent)
     - EntityDeathEvent (LivingDeathEvent)

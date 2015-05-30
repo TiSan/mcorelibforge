@@ -12,6 +12,9 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
+import net.minecraftforge.event.entity.living.EnderTeleportEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import de.tisan.mcoref.events.core.BukkitEventHandler;
@@ -27,6 +30,7 @@ import de.tisan.mcoref.plugins.commands.Command;
 import de.tisan.mcoref.plugins.commands.CommandSender;
 import de.tisan.mcoref.plugins.entities.BukkitEntity;
 import de.tisan.mcoref.plugins.entities.BukkitEntityItem;
+import de.tisan.mcoref.plugins.entities.BukkitEntityLivingBase;
 import de.tisan.mcoref.plugins.entities.effect.BukkitEntityLightningBolt;
 import de.tisan.mcoref.plugins.players.BukkitPlayer;
 import de.tisan.mcoref.plugins.worlds.BukkitWorld;
@@ -102,6 +106,21 @@ public class MCoreFEvents implements BukkitListener {
 	@SubscribeEvent
 	public void onItemTossEvent(ItemTossEvent ev) {
 		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.ItemTossEvent(new BukkitEntityItem(ev.entityItem), new BukkitPlayer(ev.player))));
+	}
+
+	@SubscribeEvent
+	public void onLivingJumpEvent(LivingJumpEvent ev) {
+		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.LivingJumpEvent(new BukkitEntityLivingBase(ev.entityLiving))));
+	}
+
+	@SubscribeEvent
+	public void onLivingUpdateEvent(LivingUpdateEvent ev) {
+		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.LivingUpdateEvent(new BukkitEntityLivingBase(ev.entityLiving))));
+	}
+
+	@SubscribeEvent
+	public void onEnderTeleportEvent(EnderTeleportEvent ev) {
+		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EnderTeleportEvent(new BukkitEntityLivingBase(ev.entityLiving), ev.targetX, ev.targetY, ev.targetZ, ev.attackDamage)));
 	}
 
 }
