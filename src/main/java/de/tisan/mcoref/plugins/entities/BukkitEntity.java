@@ -330,8 +330,8 @@ public class BukkitEntity {
 		return entity.canCommandSenderUseCommand(arg0, arg1);
 	}
 
-	public void setCurrentItemOrArmor(int arg0, net.minecraft.item.ItemStack arg1) {
-		entity.setCurrentItemOrArmor(arg0, arg1);
+	public void setCurrentItemOrArmor(int arg0, BukkitItemStack arg1) {
+		entity.setCurrentItemOrArmor(arg0, arg1.getStack());
 	}
 
 	@SideOnly(Side.CLIENT)

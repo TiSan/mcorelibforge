@@ -19,6 +19,7 @@ import de.tisan.mcoref.plugins.players.BukkitPlayer;
 public class Bukkit {
 	private static BukkitPluginManager pluginManager;
 	private static BukkitCommandManager commandManager;
+	private int guiID = 1;
 
 	public static void sendMessage(BukkitPlayer player, String message) {
 		player.addChatComponentMessage(message);
@@ -34,7 +35,11 @@ public class Bukkit {
 		}
 
 	}
-	
+
+	public int getNextGUIID() {
+		return ++guiID;
+	}
+
 	public static BukkitPlayer getPlayer(String name) {
 		if (Bukkit.isServer()) {
 			for (Object pl : MinecraftServer.getServer().getConfigurationManager().playerEntityList) {
@@ -147,6 +152,5 @@ public class Bukkit {
 
 		return groups;
 	}
-	
-	
+
 }
