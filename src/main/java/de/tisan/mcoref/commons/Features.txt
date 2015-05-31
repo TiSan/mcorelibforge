@@ -84,30 +84,11 @@
     - CreatureSpawnPosition
     - ChatClickEvent (ClickEvent)
     - ChatHoverEvent (HoverEvent)
-  - NBT ?
-  - make new Classes of all For the Class Bukkit Player
-   - net.minecraft.block.Block
+ - NBT ?(fertig)
+ - make new Classes of all For the Class Bukkit Player
    - net.minecraft.block.state.IBlockState
-   - net.minecraft.util.BlockPos
-   - net.minecraft.util.DamageSource
-   - net.minecraft.tileentity.TileEntitySign
-   - net.minecraft.command.server.CommandBlockLogic
    - net.minecraft.inventory.IInventory
-   - net.minecraft.entity.passive.EntityHorse
-   - net.minecraft.world.IInteractionObject
-   - net.minecraft.item.ItemStack
-   - net.minecraft.entity.Entity
-   - com.mojang.authlib.GameProfile
-   - net.minecraft.entity.player.EntityPlayer.EnumStatus
-   - net.minecraft.world.World
-   - net.minecraft.stats.StatBase
-   - net.minecraft.entity.EntityLivingBase
-   - net.minecraft.util.FoodStats
-   - net.minecraft.util.EnumFacing
-   - net.minecraft.world.WorldSettings.GameType
    - net.minecraft.inventory.InventoryEnderChest
-   - net.minecraft.scoreboard.Team
-   - net.minecraft.world.LockCode
-   - net.minecraft.entity.player.EnumPlayerModelParts
-   - net.minecraft.util.IChatComponent
  - Bei Events auch Variablen ändern können und diese in die Forge Events eintragen!
+ - GUI Handler
+ - Gui Buttons,Labels,GUI,Slots,more... 
