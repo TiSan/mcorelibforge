@@ -1,14 +1,14 @@
 package de.tisan.mcoref.plugins.entities;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraftforge.fml.relauncher.Side;
-public class BukkitEntityItem extends BukkitEntity{
+import de.tisan.mcoref.plugins.item.BukkitItemStack;
+
+public class BukkitEntityItem extends BukkitEntity {
 
 	private EntityItem item;
 
 	public BukkitEntityItem(EntityItem item) {
-		super((Entity)item);
+		super(item);
 		this.item = item;
 	}
 
@@ -17,20 +17,16 @@ public class BukkitEntityItem extends BukkitEntity{
 	}
 
 	@Override
-	public java.lang.String getName() {
+	public String getName() {
 		return item.getName();
 	}
 
-	public java.lang.String getOwner() {
+	public String getOwner() {
 		return item.getOwner();
 	}
 
 	public void setInfinitePickupDelay() {
 		item.setInfinitePickupDelay();
-	}
-
-	public void onCollideWithPlayer(net.minecraft.entity.player.EntityPlayer arg0) {
-		item.onCollideWithPlayer(arg0);
 	}
 
 	@Override
@@ -41,14 +37,6 @@ public class BukkitEntityItem extends BukkitEntity{
 	@Override
 	public boolean canAttackWithItem() {
 		return item.canAttackWithItem();
-	}
-
-	public void readEntityFromNBT(net.minecraft.nbt.NBTTagCompound arg0) {
-		item.readEntityFromNBT(arg0);
-	}
-
-	public void setEntityItemStack(net.minecraft.item.ItemStack arg0) {
-		item.setEntityItemStack(arg0);
 	}
 
 	public void setAgeToCreativeDespawnTime() {
@@ -64,53 +52,28 @@ public class BukkitEntityItem extends BukkitEntity{
 		return item.handleWaterMovement();
 	}
 
-	public boolean attackEntityFrom(net.minecraft.util.DamageSource arg0, float arg1) {
-		return item.attackEntityFrom(arg0, arg1);
-	}
-
 	@Override
 	public void onUpdate() {
 		item.onUpdate();
 	}
 
-	@net.minecraftforge.fml.relauncher.SideOnly(Side.CLIENT)
-	public int func_174872_o() {
-		return item.func_174872_o();
-	}
-
-	public net.minecraft.item.ItemStack getEntityItem() {
-		return item.getEntityItem();
+	public BukkitItemStack getEntityItem() {
+		return new BukkitItemStack(item.getEntityItem());
 	}
 
 	public void setNoPickupDelay() {
 		item.setNoPickupDelay();
 	}
 
-	public void setOwner(java.lang.String arg0) {
+	public void setOwner(String arg0) {
 		item.setOwner(arg0);
-	}
-
-	public void writeEntityToNBT(net.minecraft.nbt.NBTTagCompound arg0) {
-		item.writeEntityToNBT(arg0);
-	}
-
-	public void func_174873_u() {
-		item.func_174873_u();
-	}
-
-	public void func_174870_v() {
-		item.func_174870_v();
-	}
-
-	public boolean func_174874_s() {
-		return item.func_174874_s();
 	}
 
 	public void setPickupDelay(int arg0) {
 		item.setPickupDelay(arg0);
 	}
 
-	public void setThrower(java.lang.String arg0) {
+	public void setThrower(String arg0) {
 		item.setThrower(arg0);
 	}
 
