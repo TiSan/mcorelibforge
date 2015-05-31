@@ -33,7 +33,6 @@ public class Bukkit {
 		} else {
 			Bukkit.sendMessage(Bukkit.getClientPlayer(), message);
 		}
-
 	}
 
 	public int getNextGUIID() {
