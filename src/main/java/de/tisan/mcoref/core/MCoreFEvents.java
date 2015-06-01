@@ -18,6 +18,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import de.tisan.mcoref.events.core.BukkitEventHandler;
@@ -25,6 +26,7 @@ import de.tisan.mcoref.events.core.Priority;
 import de.tisan.mcoref.events.properties.BukkitBlockInteractByPlayerEvent;
 import de.tisan.mcoref.events.properties.BukkitListener;
 import de.tisan.mcoref.events.properties.EntityConstructEvent;
+import de.tisan.mcoref.events.properties.EntityDamageByFallEvent;
 import de.tisan.mcoref.events.properties.EntityEnteringChunkEvent;
 import de.tisan.mcoref.events.properties.EntityPlaySoundEffect;
 import de.tisan.mcoref.events.properties.EntityStruckByLightningEvent;
@@ -191,6 +193,16 @@ public class MCoreFEvents implements BukkitListener {
 			Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.EntityDeathDropItemEvent(new BukkitEntityLivingBase(ev.entityLiving), DamageCause.getCause(ev.source), ev.drops, ev.lootingLevel, ev.recentlyHit));
 		}
 
+	}
+
+	@SubscribeEvent
+	public void onEntityDamageByFallEvent(LivingFallEvent ev) {
+		EntityDamageByFallEvent e = new EntityDamageByFallEvent(new BukkitEntityLivingBase(ev.entityLiving), ev.distance, ev.damageMultiplier);
+		if (ev.isCancelable()) {
+			ev.setCanceled(Bukkit.getEventManager().callEvent(e));
+		} else {
+			Bukkit.getEventManager().callEvent(e);
+		}
 	}
 
 }
