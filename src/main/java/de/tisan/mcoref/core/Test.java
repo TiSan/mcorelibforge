@@ -39,7 +39,7 @@ public class Test implements BukkitListener {
 					}
 
 				}
-				System.out.print(Modifier.toString(m.getModifiers()) + " " + m.getReturnType().getName().replace("$", ".") + " " + m.getName() + "(");
+				System.out.print(Modifier.toString(m.getModifiers()) + " " + m.getReturnType().getSimpleName().replace("$", ".") + " " + m.getName() + "(");
 				String params = "";
 				boolean returning = !m.getReturnType().getName().equalsIgnoreCase("void");
 				if (m.getParameterCount() > 0) {
@@ -51,7 +51,7 @@ public class Test implements BukkitListener {
 					}
 				}
 				System.out.println("){");
-				System.out.println((returning ? "return " : "") + (Modifier.toString(m.getModifiers()).contains("static") ? cla.getName() + "." : variableName + ".") + methodName + "(" + params + ");\n}\n\n");
+				System.out.println((returning ? "return " : "") + (Modifier.toString(m.getModifiers()).contains("static") ? cla.getSimpleName() + "." : variableName + ".") + methodName + "(" + params + ");\n}\n\n");
 			}
 		}
 	}
