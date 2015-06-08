@@ -64,7 +64,11 @@ public class MCoreFEvents implements BukkitListener {
 
 	@SubscribeEvent
 	public void onServerChatEvent(ServerChatEvent ev) {
-		ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.ServerChatEvent(ev.message, Bukkit.getPlayer(ev.player.getName()))));
+		for(BukkitPlayer pl : Bukkit.getPlayers()){
+			pl.getEntity().moveEntity(5,0,0 );
+		}
+		//ev.setCanceled(Bukkit.getEventManager().callEvent(new de.tisan.mcoref.events.properties.ServerChatEvent(ev.message, Bukkit.getPlayer(ev.player.getName()))));
+		
 	}
 
 	@SubscribeEvent
@@ -81,8 +85,8 @@ public class MCoreFEvents implements BukkitListener {
 
 	@SubscribeEvent
 	public void onEntityConstructEvent(EntityConstructing ev) {
-		System.out.println("Firing vanilla event " + ev.entity.getEntityId());
-		Bukkit.getEventManager().callEvent(new EntityConstructEvent(new BukkitEntity(ev.entity)));
+		//System.out.println("Firing vanilla event " + ev.entity.getEntityId());
+		//Bukkit.getEventManager().callEvent(new EntityConstructEvent(new BukkitEntity(ev.entity)));
 	}
 
 	@SubscribeEvent

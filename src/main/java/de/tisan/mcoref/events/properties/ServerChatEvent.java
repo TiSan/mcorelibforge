@@ -10,7 +10,12 @@ public class ServerChatEvent extends BukkitEvent{
 	public ServerChatEvent(String message, BukkitPlayer player){
 		this.message = message;
 		this.player = player;
-		username = player.getName();
+		if(player != null && player.getName() != null){
+			username = player.getName();
+		} else {
+			username = player.getDisplayName();
+		}
+		
 	}
 
 	public String getMessage() {

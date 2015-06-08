@@ -92,3 +92,32 @@
  - Bei Events auch Variablen ändern können und diese in die Forge Events eintragen!
  - GUI Handler
  - Gui Buttons,Labels,GUI,Slots,more... 
+ - Movable API -> Send players to a specific location, but not teleoport them, instead of it he should "walk"
+ - Holograms
+ - Title, Subtitle
+ - ----
+ - Integration der Inventories
+ - Integration der Recipes
+ - GameProfile-Manipulation (?)
+ - GameMode
+ - Sounds (wenn möglich, auch eigene WAV/ogg?)
+ - Schedulers [Thread-basiert] [ThreadManager? oder andere Klasse?]
+ - Socket-Schnittstelle, die Anfragen entgegennehmen kann und Aktionen von außen steuert
+   - Authentifizierung:
+      - User / Passwort [Einstellen in Config und GUI]
+      - One-use-Auth-Code [generiert auf einer Webseite]
+   - Events, etc. werden ebenfalls über Sockets gepowert, lediglich String/int-Werte, keine Objekte von der Forge API [Kompatibilität!]
+   - Möglichkeit der Ausgabe der Console über Socket
+  - Interner Webserver zur Anzeige von Player-Stats [Opt-out]
+    - Integration von Dynmap? :D (--> Package-Namen müssen gleich zu Bukkit sein)
+  - Auto-Update-Funktion (?)
+    - Kann man seine eigene Datei nach dem Laden noch überschreiben? Evtl. mit Disablen und Enablen?
+    - Oder lediglich Nachricht ausgeben, wie bei anderen Plugins auch?
+  - Webseite (wie CurseForge) für Plugins zum hochladen, Seite erstellen, runterladen, mit eigenem Server verknüpfen!
+ 
+ 
+ # Sample plugin.ini
+ # Anti-YAML-Version
+ main=de.tisan.mcoref.test.TestClass
+ version=0.1
+ command=test,Dies ist ein Test-Command

@@ -56,6 +56,7 @@ public class BukkitPluginManager {
 						
 						if ((pluginName != null) && (version != null) && (mainClass != null)) {
 							try {
+								
 								Class<?> rawClass = Class.forName(mainClass, true, loader);
 								Class<? extends BukkitJavaPlugin> runClass = rawClass.asSubclass(BukkitJavaPlugin.class);
 								try {

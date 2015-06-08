@@ -10,6 +10,7 @@ import net.minecraft.nbt.NBTException;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import de.tisan.mcoref.events.properties.BukkitListener;
+import de.tisan.mcoref.helpers.Bukkit;
 
 public class Test implements BukkitListener {
 
@@ -54,6 +55,8 @@ public class Test implements BukkitListener {
 				System.out.println((returning ? "return " : "") + (Modifier.toString(m.getModifiers()).contains("static") ? cla.getSimpleName() + "." : variableName + ".") + methodName + "(" + params + ");\n}\n\n");
 			}
 		}
+		
+		
 	}
 
 }
