@@ -106,6 +106,26 @@
    - Authentifizierung:
       - User / Passwort [Einstellen in Config und GUI]
       - One-use-Auth-Code [generiert auf einer Webseite]
+   - Funktionen
+     - ping - pong      SERVER/ping?time=1234567879(current millis)    -> {time=123467890(current millis)}
+     - Playerliste      SERVER
+     - servername
+     - server ip
+     - port
+     - chat
+     - weltenliste
+     - playerinfos
+       - name
+       - health
+       - hunger
+       - inventory
+       - xp
+       - gifte
+       - gamemode
+       - op (ja nein)
+       
+     - nicht nur getten, sondern auch setten! (was geht)
+ 
    - Events, etc. werden ebenfalls über Sockets gepowert, lediglich String/int-Werte, keine Objekte von der Forge API [Kompatibilität!]
    - Möglichkeit der Ausgabe der Console über Socket
   - Interner Webserver zur Anzeige von Player-Stats [Opt-out]
