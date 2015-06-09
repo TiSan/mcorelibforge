@@ -1,6 +1,6 @@
 ~~~~ MCoreF Upcoming features and ideas
  ~ Developed by TiSan and mcNETdev
- 
+ ~ Hint: This planned features are written in german! The features are only in minds, it is not planned that all ideas will be implemented. 
  
  Ideas:
   - Events (!)
