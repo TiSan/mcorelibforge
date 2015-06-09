@@ -23,3 +23,6 @@ guaranteed. If the mod state switches to stable or beta, you can find this infor
 the fully-working of this mod. 
 
 Please report bugs and problems. If you have feedback, tell this too. 
+
+# Used sources
+ - Lambdatra by Lukas Dietrich (https://github.com/lukasdietrich/lambdatra)
